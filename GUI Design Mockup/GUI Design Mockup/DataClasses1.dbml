@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PRIDEProject" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DOOMSDAYMACHINE;Initial Catalog=PRIDEProject;Integrated Security=True" SettingsObjectName="GUI_Design_Mockup.Properties.Settings" SettingsPropertyName="PRIDEProjectConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Award" Member="Awards">
+    <Type Name="Award">
+      <Column Name="AwardID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AwardTypeID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipientID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NominatorID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AwardDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AwardDeptID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Departments">
+    <Type Name="Department">
+      <Column Name="DeptID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeptHeadID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="EmployeeID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MiddleInitial" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PreferredName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DeptID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="HireDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsDirector" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HR_Status" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="EmployeeStatusCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PrideEligible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DeptRecord" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateLastUpdated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="OldAwardCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HR_FTE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Groups">
+    <Type Name="Group">
+      <Column Name="GroupID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GroupNum" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DayOfPride" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NextID" Member="NextIDs">
+    <Type Name="NextID">
+      <Column Name="TableName" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NextNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Prefix" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pride_Expenditure" Member="Pride_Expenditures">
+    <Type Name="Pride_Expenditure">
+      <Column Name="TransactionID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PrizeID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prize" Member="Prizes">
+    <Type Name="Prize">
+      <Column Name="PrizeID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PrizeName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Type_Of_Award" Member="Type_Of_Awards">
+    <Type Name="Type_Of_Award">
+      <Column Name="AwardTypeID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AwardTypeName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IsNomination" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Frequency" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AwardNominationID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
