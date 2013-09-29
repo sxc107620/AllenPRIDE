@@ -13,6 +13,8 @@ namespace GUI_Design_Mockup
     public partial class frmMainMenu : Form
     {
         List<Group> GroupList;
+        List<Department> DeptList;
+        List<Employee> EmpList;
 
         DataClasses1DataContext DContext;
 
@@ -49,13 +51,75 @@ namespace GUI_Design_Mockup
             this.employeeTableAdapter.Fill(this.pRIDE_beDataSet.Employee);
 
             DContext = new DataClasses1DataContext();
+
+            InitializeGroupBox();
+            InitializeDeptBox();
+            InitializeEmpBox();
+        }
+
+        private void InitializeGroupBox()
+        {
             var GroupListRaw = from G in DContext.Groups
+                               orderby G.GroupID ascending
                                select G;
             GroupList = new List<Group>();
-            foreach (Group G in GroupListRaw)
-                GroupList.Add(G);
 
-           
+            Group AllGroup;
+            AllGroup = new Group();
+            AllGroup.GroupID = "GRP0000000";
+            AllGroup.GroupNum = "All Groups";
+            AllGroup.DayOfPride = 'X';
+            GroupList.Add(AllGroup);
+
+            foreach (Group G in GroupListRaw)
+            {
+                GroupList.Add(G);
+            }
+
+            GroupNoBox.DataSource = GroupList;
+        }
+
+
+        private void InitializeDeptBox()
+        {
+            var DeptListRaw = from D in DContext.Departments
+                              orderby D.DeptName ascending
+                              select D;
+            DeptList = new List<Department>();
+
+            Department AllDepartment;
+            AllDepartment = new Department();
+            AllDepartment.DeptID = "DPT0000000";
+            AllDepartment.DeptName = "All Departments";
+            DeptList.Add(AllDepartment);
+
+            foreach (Department D in DeptListRaw)
+            {
+                DeptList.Add(D);
+            }
+
+            DepartmentBox.DataSource = DeptList;
+        }
+
+        private void InitializeEmpBox()
+        {
+            var EmpListRaw = from E in DContext.Employees
+                             orderby E.LastName ascending
+                             select E;
+            EmpList = new List<Employee>();
+
+            Employee AllEmployee;
+            AllEmployee = new Employee();
+            AllEmployee.EmployeeID = "EMP0000000";
+            EmpList.Add(AllEmployee);
+
+            foreach (Employee E in EmpListRaw)
+            {
+                EmpList.Add(E);
+            }
+
+            NominatorBox.DataSource = EmpList;
+            RecipientBox.DataSource = EmpList;
         }
 
         private void button12_Click(object sender, EventArgs e)

@@ -465,6 +465,11 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+
+        public override string ToString()
+        {
+            return this.DeptName;
+        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
@@ -959,6 +964,15 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+
+        public override string ToString()
+        {
+            if (EmployeeID.Equals("EMP0000000"))
+                return "All Employees";
+            else
+                return this.LastName + ", " + this.PreferredName+" "+this.MiddleInitial;
+
+        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Group]")]
@@ -1069,6 +1083,11 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+
+        public override string ToString()
+        {
+           return this.GroupNum;
+        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NextID")]

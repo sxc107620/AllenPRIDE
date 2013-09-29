@@ -38,28 +38,28 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.GroupNoBox = new System.Windows.Forms.ComboBox();
+            this.DepartmentBox = new System.Windows.Forms.ComboBox();
+            this.RecipientBox = new System.Windows.Forms.ComboBox();
+            this.NominatorBox = new System.Windows.Forms.ComboBox();
+            this.AwardTypeBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.StartDateBox = new System.Windows.Forms.DateTimePicker();
+            this.EndDateBox = new System.Windows.Forms.DateTimePicker();
+            this.EmpAwdSumButton = new System.Windows.Forms.Button();
+            this.MonthStatRptButton = new System.Windows.Forms.Button();
+            this.DeptGrpRptButton = new System.Windows.Forms.Button();
+            this.EmployeeEditButton = new System.Windows.Forms.Button();
+            this.ReviewOTSButton = new System.Windows.Forms.Button();
+            this.NewOTSButton = new System.Windows.Forms.Button();
+            this.BlankOTSButton = new System.Windows.Forms.Button();
+            this.YSPButton = new System.Windows.Forms.Button();
+            this.DWPButton = new System.Windows.Forms.Button();
+            this.DOPButton = new System.Windows.Forms.Button();
+            this.PAAButton = new System.Windows.Forms.Button();
             this.pRIDE_beDataSet = new GUI_Design_Mockup.PRIDE_beDataSet();
             this.pRIDEbeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -93,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 78);
+            this.label3.Location = new System.Drawing.Point(21, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 2;
@@ -102,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 105);
+            this.label4.Location = new System.Drawing.Point(12, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 3;
@@ -111,7 +111,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 132);
+            this.label5.Location = new System.Drawing.Point(22, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 4;
@@ -120,7 +120,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(62, 159);
+            this.label6.Location = new System.Drawing.Point(19, 159);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 5;
@@ -129,7 +129,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(54, 186);
+            this.label7.Location = new System.Drawing.Point(11, 186);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 6;
@@ -138,7 +138,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(281, 159);
+            this.label8.Location = new System.Drawing.Point(343, 161);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 13);
             this.label8.TabIndex = 7;
@@ -147,56 +147,60 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(284, 186);
+            this.label9.Location = new System.Drawing.Point(346, 188);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "Select End Date:";
             // 
-            // comboBox1
+            // GroupNoBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(126, 75);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "All Groups";
+            this.GroupNoBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.GroupNoBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.GroupNoBox.FormattingEnabled = true;
+            this.GroupNoBox.Location = new System.Drawing.Point(83, 75);
+            this.GroupNoBox.Name = "GroupNoBox";
+            this.GroupNoBox.Size = new System.Drawing.Size(95, 21);
+            this.GroupNoBox.TabIndex = 9;
+            this.GroupNoBox.Text = "All Groups";
             // 
-            // comboBox2
+            // DepartmentBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(126, 102);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
-            this.comboBox2.Text = "All Departments";
+            this.DepartmentBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.DepartmentBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.DepartmentBox.FormattingEnabled = true;
+            this.DepartmentBox.Location = new System.Drawing.Point(83, 102);
+            this.DepartmentBox.Name = "DepartmentBox";
+            this.DepartmentBox.Size = new System.Drawing.Size(413, 21);
+            this.DepartmentBox.TabIndex = 10;
+            this.DepartmentBox.Text = "All Departments";
             // 
-            // comboBox3
+            // RecipientBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(126, 129);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 11;
-            this.comboBox3.Text = "All Employees";
+            this.RecipientBox.FormattingEnabled = true;
+            this.RecipientBox.Location = new System.Drawing.Point(83, 129);
+            this.RecipientBox.Name = "RecipientBox";
+            this.RecipientBox.Size = new System.Drawing.Size(254, 21);
+            this.RecipientBox.TabIndex = 11;
+            this.RecipientBox.Text = "All Employees";
             // 
-            // comboBox4
+            // NominatorBox
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(126, 156);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 12;
-            this.comboBox4.Text = "All Employees";
+            this.NominatorBox.FormattingEnabled = true;
+            this.NominatorBox.Location = new System.Drawing.Point(83, 156);
+            this.NominatorBox.Name = "NominatorBox";
+            this.NominatorBox.Size = new System.Drawing.Size(254, 21);
+            this.NominatorBox.TabIndex = 12;
+            this.NominatorBox.Text = "All Employees";
             // 
-            // comboBox5
+            // AwardTypeBox
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(127, 183);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 13;
-            this.comboBox5.Text = "All Awards";
+            this.AwardTypeBox.FormattingEnabled = true;
+            this.AwardTypeBox.Location = new System.Drawing.Point(84, 183);
+            this.AwardTypeBox.Name = "AwardTypeBox";
+            this.AwardTypeBox.Size = new System.Drawing.Size(253, 21);
+            this.AwardTypeBox.TabIndex = 13;
+            this.AwardTypeBox.Text = "All Awards";
             // 
             // label10
             // 
@@ -238,122 +242,122 @@
             this.label13.TabIndex = 17;
             this.label13.Text = "Edit/Add Employees:";
             // 
-            // dateTimePicker1
+            // StartDateBox
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(378, 157);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(99, 20);
-            this.dateTimePicker1.TabIndex = 18;
+            this.StartDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDateBox.Location = new System.Drawing.Point(440, 159);
+            this.StartDateBox.Name = "StartDateBox";
+            this.StartDateBox.Size = new System.Drawing.Size(99, 20);
+            this.StartDateBox.TabIndex = 18;
             // 
-            // dateTimePicker2
+            // EndDateBox
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(378, 184);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(99, 20);
-            this.dateTimePicker2.TabIndex = 19;
+            this.EndDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateBox.Location = new System.Drawing.Point(440, 186);
+            this.EndDateBox.Name = "EndDateBox";
+            this.EndDateBox.Size = new System.Drawing.Size(99, 20);
+            this.EndDateBox.TabIndex = 19;
             // 
-            // button1
+            // EmpAwdSumButton
             // 
-            this.button1.Location = new System.Drawing.Point(15, 240);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Employee Awards Summary";
-            this.button1.UseVisualStyleBackColor = true;
+            this.EmpAwdSumButton.Location = new System.Drawing.Point(15, 240);
+            this.EmpAwdSumButton.Name = "EmpAwdSumButton";
+            this.EmpAwdSumButton.Size = new System.Drawing.Size(100, 50);
+            this.EmpAwdSumButton.TabIndex = 20;
+            this.EmpAwdSumButton.Text = "Employee Awards Summary";
+            this.EmpAwdSumButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // MonthStatRptButton
             // 
-            this.button2.Location = new System.Drawing.Point(121, 240);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 50);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Monthly Statistics Report";
-            this.button2.UseVisualStyleBackColor = true;
+            this.MonthStatRptButton.Location = new System.Drawing.Point(121, 240);
+            this.MonthStatRptButton.Name = "MonthStatRptButton";
+            this.MonthStatRptButton.Size = new System.Drawing.Size(100, 50);
+            this.MonthStatRptButton.TabIndex = 21;
+            this.MonthStatRptButton.Text = "Monthly Statistics Report";
+            this.MonthStatRptButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // DeptGrpRptButton
             // 
-            this.button3.Location = new System.Drawing.Point(227, 240);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 50);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Department Group Report";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DeptGrpRptButton.Location = new System.Drawing.Point(227, 240);
+            this.DeptGrpRptButton.Name = "DeptGrpRptButton";
+            this.DeptGrpRptButton.Size = new System.Drawing.Size(100, 50);
+            this.DeptGrpRptButton.TabIndex = 22;
+            this.DeptGrpRptButton.Text = "Department Group Report";
+            this.DeptGrpRptButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // EmployeeEditButton
             // 
-            this.button4.Location = new System.Drawing.Point(390, 240);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 50);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "Employees";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.EmployeeEditButton.Location = new System.Drawing.Point(390, 240);
+            this.EmployeeEditButton.Name = "EmployeeEditButton";
+            this.EmployeeEditButton.Size = new System.Drawing.Size(100, 50);
+            this.EmployeeEditButton.TabIndex = 23;
+            this.EmployeeEditButton.Text = "Employees";
+            this.EmployeeEditButton.UseVisualStyleBackColor = true;
+            this.EmployeeEditButton.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // ReviewOTSButton
             // 
-            this.button5.Location = new System.Drawing.Point(15, 344);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 50);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "Review On The Spot";
-            this.button5.UseVisualStyleBackColor = true;
+            this.ReviewOTSButton.Location = new System.Drawing.Point(15, 344);
+            this.ReviewOTSButton.Name = "ReviewOTSButton";
+            this.ReviewOTSButton.Size = new System.Drawing.Size(100, 50);
+            this.ReviewOTSButton.TabIndex = 24;
+            this.ReviewOTSButton.Text = "Review On The Spot";
+            this.ReviewOTSButton.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // NewOTSButton
             // 
-            this.button6.Location = new System.Drawing.Point(121, 344);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 50);
-            this.button6.TabIndex = 25;
-            this.button6.Text = "New On The Spot";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.NewOTSButton.Location = new System.Drawing.Point(121, 344);
+            this.NewOTSButton.Name = "NewOTSButton";
+            this.NewOTSButton.Size = new System.Drawing.Size(100, 50);
+            this.NewOTSButton.TabIndex = 25;
+            this.NewOTSButton.Text = "New On The Spot";
+            this.NewOTSButton.UseVisualStyleBackColor = true;
+            this.NewOTSButton.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // BlankOTSButton
             // 
-            this.button7.Location = new System.Drawing.Point(227, 344);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 50);
-            this.button7.TabIndex = 26;
-            this.button7.Text = "Blank On The Spot Form";
-            this.button7.UseVisualStyleBackColor = true;
+            this.BlankOTSButton.Location = new System.Drawing.Point(227, 344);
+            this.BlankOTSButton.Name = "BlankOTSButton";
+            this.BlankOTSButton.Size = new System.Drawing.Size(100, 50);
+            this.BlankOTSButton.TabIndex = 26;
+            this.BlankOTSButton.Text = "Blank On The Spot Form";
+            this.BlankOTSButton.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // YSPButton
             // 
-            this.button8.Location = new System.Drawing.Point(15, 448);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(100, 50);
-            this.button8.TabIndex = 27;
-            this.button8.Text = "You Showed Pride";
-            this.button8.UseVisualStyleBackColor = true;
+            this.YSPButton.Location = new System.Drawing.Point(15, 448);
+            this.YSPButton.Name = "YSPButton";
+            this.YSPButton.Size = new System.Drawing.Size(100, 50);
+            this.YSPButton.TabIndex = 27;
+            this.YSPButton.Text = "You Showed Pride";
+            this.YSPButton.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // DWPButton
             // 
-            this.button9.Location = new System.Drawing.Point(121, 448);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(100, 50);
-            this.button9.TabIndex = 28;
-            this.button9.Text = "Dinner With Pride";
-            this.button9.UseVisualStyleBackColor = true;
+            this.DWPButton.Location = new System.Drawing.Point(121, 448);
+            this.DWPButton.Name = "DWPButton";
+            this.DWPButton.Size = new System.Drawing.Size(100, 50);
+            this.DWPButton.TabIndex = 28;
+            this.DWPButton.Text = "Dinner With Pride";
+            this.DWPButton.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // DOPButton
             // 
-            this.button10.Location = new System.Drawing.Point(227, 448);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(100, 50);
-            this.button10.TabIndex = 29;
-            this.button10.Text = "Day Of Pride";
-            this.button10.UseVisualStyleBackColor = true;
+            this.DOPButton.Location = new System.Drawing.Point(227, 448);
+            this.DOPButton.Name = "DOPButton";
+            this.DOPButton.Size = new System.Drawing.Size(100, 50);
+            this.DOPButton.TabIndex = 29;
+            this.DOPButton.Text = "Day Of Pride";
+            this.DOPButton.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // PAAButton
             // 
-            this.button11.Location = new System.Drawing.Point(333, 448);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(100, 50);
-            this.button11.TabIndex = 30;
-            this.button11.Text = "PRIDE Annual Awards";
-            this.button11.UseVisualStyleBackColor = true;
+            this.PAAButton.Location = new System.Drawing.Point(333, 448);
+            this.PAAButton.Name = "PAAButton";
+            this.PAAButton.Size = new System.Drawing.Size(100, 50);
+            this.PAAButton.TabIndex = 30;
+            this.PAAButton.Text = "PRIDE Annual Awards";
+            this.PAAButton.UseVisualStyleBackColor = true;
             // 
             // pRIDE_beDataSet
             // 
@@ -390,28 +394,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 508);
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.PAAButton);
+            this.Controls.Add(this.DOPButton);
+            this.Controls.Add(this.DWPButton);
+            this.Controls.Add(this.YSPButton);
+            this.Controls.Add(this.BlankOTSButton);
+            this.Controls.Add(this.NewOTSButton);
+            this.Controls.Add(this.ReviewOTSButton);
+            this.Controls.Add(this.EmployeeEditButton);
+            this.Controls.Add(this.DeptGrpRptButton);
+            this.Controls.Add(this.MonthStatRptButton);
+            this.Controls.Add(this.EmpAwdSumButton);
+            this.Controls.Add(this.EndDateBox);
+            this.Controls.Add(this.StartDateBox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.AwardTypeBox);
+            this.Controls.Add(this.NominatorBox);
+            this.Controls.Add(this.RecipientBox);
+            this.Controls.Add(this.DepartmentBox);
+            this.Controls.Add(this.GroupNoBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -443,28 +447,28 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox GroupNoBox;
+        private System.Windows.Forms.ComboBox DepartmentBox;
+        private System.Windows.Forms.ComboBox RecipientBox;
+        private System.Windows.Forms.ComboBox NominatorBox;
+        private System.Windows.Forms.ComboBox AwardTypeBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.DateTimePicker StartDateBox;
+        private System.Windows.Forms.DateTimePicker EndDateBox;
+        private System.Windows.Forms.Button EmpAwdSumButton;
+        private System.Windows.Forms.Button MonthStatRptButton;
+        private System.Windows.Forms.Button DeptGrpRptButton;
+        private System.Windows.Forms.Button EmployeeEditButton;
+        private System.Windows.Forms.Button ReviewOTSButton;
+        private System.Windows.Forms.Button NewOTSButton;
+        private System.Windows.Forms.Button BlankOTSButton;
+        private System.Windows.Forms.Button YSPButton;
+        private System.Windows.Forms.Button DWPButton;
+        private System.Windows.Forms.Button DOPButton;
+        private System.Windows.Forms.Button PAAButton;
         private System.Windows.Forms.BindingSource pRIDEbeDataSetBindingSource;
         private PRIDE_beDataSet pRIDE_beDataSet;
         private System.Windows.Forms.BindingSource employeeBindingSource;
