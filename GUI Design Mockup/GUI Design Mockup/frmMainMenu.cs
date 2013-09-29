@@ -15,6 +15,7 @@ namespace GUI_Design_Mockup
         List<Group> GroupList;
         List<Department> DeptList;
         List<Employee> EmpList;
+        List<Type_Of_Award> ToAList;
 
         DataClasses1DataContext DContext;
 
@@ -55,6 +56,7 @@ namespace GUI_Design_Mockup
             InitializeGroupBox();
             InitializeDeptBox();
             InitializeEmpBox();
+            InitializeAwdBox();
         }
 
         private void InitializeGroupBox()
@@ -122,9 +124,34 @@ namespace GUI_Design_Mockup
             RecipientBox.DataSource = EmpList;
         }
 
+        private void InitializeAwdBox()
+        {
+            var AwdListRaw = from A in DContext.Type_Of_Awards
+                             orderby A.AwardTypeName ascending
+                             select A;
+            ToAList = new List<Type_Of_Award >();
+
+            Type_Of_Award  AllAward;
+            AllAward = new Type_Of_Award();
+            AllAward.AwardTypeName = "All Awards";
+            ToAList.Add(AllAward);
+
+            foreach (Type_Of_Award ToA in AwdListRaw)
+            {
+                ToAList.Add(ToA);
+            }
+
+            AwardTypeBox.DataSource = ToAList;
+        }
+
         private void button12_Click(object sender, EventArgs e)
         {
             LaunchForm(new frmUpdateFromAccess());
+        }
+
+        private void ReviewOTSButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1600,6 +1600,11 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+
+        public override string ToString()
+        {
+            return AwardTypeName;
+        }
 	}
 }
 #pragma warning restore 1591

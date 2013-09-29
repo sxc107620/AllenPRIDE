@@ -177,6 +177,8 @@
             // 
             // RecipientBox
             // 
+            this.RecipientBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.RecipientBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.RecipientBox.FormattingEnabled = true;
             this.RecipientBox.Location = new System.Drawing.Point(83, 129);
             this.RecipientBox.Name = "RecipientBox";
@@ -186,6 +188,8 @@
             // 
             // NominatorBox
             // 
+            this.NominatorBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NominatorBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.NominatorBox.FormattingEnabled = true;
             this.NominatorBox.Location = new System.Drawing.Point(83, 156);
             this.NominatorBox.Name = "NominatorBox";
@@ -195,6 +199,8 @@
             // 
             // AwardTypeBox
             // 
+            this.AwardTypeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.AwardTypeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.AwardTypeBox.FormattingEnabled = true;
             this.AwardTypeBox.Location = new System.Drawing.Point(84, 183);
             this.AwardTypeBox.Name = "AwardTypeBox";
@@ -303,6 +309,7 @@
             this.ReviewOTSButton.TabIndex = 24;
             this.ReviewOTSButton.Text = "Review On The Spot";
             this.ReviewOTSButton.UseVisualStyleBackColor = true;
+            this.ReviewOTSButton.Click += new System.EventHandler(this.ReviewOTSButton_Click);
             // 
             // NewOTSButton
             // 
