@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="5d65e974-1a82-426e-8735-8fbb801f3fd0" absoluteBounds="0.5, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DataClasses1DataContext/Award" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5276d5d-4edc-4ca9-9955-a2c28132314d" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ac7ac13-f6cb-401e-a1d0-8b4c9b0fb70f" absoluteBounds="2.625, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClasses1DataContext/Department" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cddc8499-6b41-4263-afc7-58343c0bacc8" absoluteBounds="2.6399999999999997, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="170f6b3e-728e-4b75-a240-c49b508c0637" absoluteBounds="4.75, 0.5, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/DataClasses1DataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ce66f4c-5f55-4b14-8df9-4953d156e45b" absoluteBounds="4.765, 0.96, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3df3d77-8f1e-46a9-9eb3-f34e72481c89" absoluteBounds="2.625, 2, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClasses1DataContext/Group" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12faa624-c984-47cc-9347-ecf803a8ff58" absoluteBounds="2.6400000000000006, 2.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="74dc2bc5-3f18-46b2-93d5-e8d38f4fb265" absoluteBounds="2.625, 3.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClasses1DataContext/NextID" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24469b73-6f8a-4a1f-9dd1-b64913f997f0" absoluteBounds="2.64, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2a3bb292-710a-4013-ba3c-d1d0e6ce88a6" absoluteBounds="0.5, 2.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClasses1DataContext/Pride_Expenditure" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7024282e-6f47-43a1-a63b-5e446c69f3b1" absoluteBounds="0.51500000000000057, 3.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b88f3fa-7bc1-4f05-8baf-61723cf5a4f3" absoluteBounds="0.5, 4.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClasses1DataContext/Prize" />
+      <nestedChildShapes>
+        <elementListCompartment Id="472de4f8-fa8b-4a81-8925-0f254bd44d8c" absoluteBounds="0.51500000000000057, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6d2f96b-fc73-4c96-88fa-e6232b0baf54" absoluteBounds="2.625, 5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClasses1DataContext/Type_Of_Award" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eef2ba58-e92b-4329-b807-b7d5462bb835" absoluteBounds="2.6399999999999997, 5.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
