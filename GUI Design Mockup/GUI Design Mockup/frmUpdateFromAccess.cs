@@ -12,12 +12,13 @@ namespace GUI_Design_Mockup
 {
     public partial class frmUpdateFromAccess : Form
     {
-        DataClasses1DataContext DContext;
+        DataConnectionClass DContext;
         DataTable AwardDataTable, EmployeeDataTable, EmployeeAwardDataTable, GroupDataTable;
+
         public frmUpdateFromAccess()
         {
             InitializeComponent();
-            DContext = new DataClasses1DataContext();
+            DContext = DBCommands.DContext;
             AwardDataTable = pRIDE_beDataSet.TypeOfAward;
             EmployeeDataTable = pRIDE_beDataSet.Employee;
             EmployeeAwardDataTable = pRIDE_beDataSet.EmployeeAward;
@@ -39,7 +40,8 @@ namespace GUI_Design_Mockup
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            LoadAllEmployees();
+            LoadAllAwards();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,68 +54,7 @@ namespace GUI_Design_Mockup
         private void button3_Click(object sender, EventArgs e)
         {
             LoadAllAwards();
-        }
-
-        private int NextID(string TableName)
-        {
-            //var matchedproduct = db.GetTable<product>().SingleOrDefault(p =>p.ProductID==productID);
-            var NextId = DContext.GetTable<NextID>().SingleOrDefault(p => p.TableName == TableName);
-            int result = (int)NextId.NextNum;
-            NextId.NextNum++;
-            DContext.SubmitChanges();
-            return result;
-        }
-
-        private string GetAwardNominationID(string AwardName)
-        {
-            string result = "";
-            var AwdNomination = DContext.GetTable<Type_Of_Award>().SingleOrDefault(p => p.AwardTypeName == AwardName);
-            if (AwdNomination != null)
-                result = AwdNomination.AwardTypeID;
-            return result;
-        }
-
-        private string GetDeptID(string DeptName)
-        {
-            string result = "";
-            var DptVar = DContext.GetTable<Department>().SingleOrDefault(p => p.DeptName == DeptName);
-            if (DptVar != null)
-                result = DptVar.DeptID;
-            return result;
-        }
-
-        private string GetGroupID(string GroupName)
-        {
-            string result = "";
-            var DptVar = DContext.GetTable<Group>().SingleOrDefault(p => p.GroupNum == GroupName);
-            if (DptVar != null)
-                result = DptVar.GroupID;
-            return result;
-        }
-
-        private string GetAwardID(string AwardName)
-        {
-            string result = "";
-            var AwdVar = DContext.GetTable<Type_Of_Award>().SingleOrDefault(p => p.AwardTypeName == AwardName);
-            if (AwdVar != null)
-                result = AwdVar.AwardTypeID;
-            return result;
-        }
-
-        private bool GetAwardExists(string AwardID)
-        {
-            var AwdVar = DContext.GetTable<Award>().SingleOrDefault(p => p.AwardID == AwardID);
-            return AwdVar!=null;
-        }
-
-        private string GetEmployeeID(string PreferredName, string LastName)
-        {
-            string result = "";
-            var EmpVar = DContext.GetTable<Employee>().SingleOrDefault(p => p.PreferredName==PreferredName && p.LastName==LastName);
-            if (EmpVar != null)
-                result = EmpVar.EmployeeID;
-            return result;
-        }
+        }  
 
         private List<DataRow> GetAwards(string AwType)
         {
@@ -136,10 +77,10 @@ namespace GUI_Design_Mockup
             for (C1 = 0; C1 < NominationRows.Count; C1++)
             {
                 ToA = new Type_Of_Award();
-                NextNum = NextID("Type_Of_Award");
+                NextNum = frmMainMenu.NextID("Type_Of_Award");
                 ToA.AwardTypeID = "TOA" + NextNum.ToString("0000000");
                 ToA.AwardTypeName = NominationRows[C1][0].ToString();
-                if (GetAwardID(ToA.AwardTypeName).Equals(""))
+                if (DBCommands.GetAwardID(ToA.AwardTypeName).Equals(""))
                 {
                     ToA.IsNomination = true;
                     ToA.Frequency = NominationRows[C1][3].ToString();
@@ -171,14 +112,14 @@ namespace GUI_Design_Mockup
             for (C1 = 0; C1 < NominationRows.Count; C1++)
             {
                 ToA = new Type_Of_Award();
-                NextNum = NextID("Type_Of_Award");
+                NextNum = frmMainMenu.NextID("Type_Of_Award");
                 ToA.AwardTypeID = "TOA" + NextNum.ToString("0000000");
                 ToA.AwardTypeName = NominationRows[C1][0].ToString();
-                if (GetAwardID(ToA.AwardTypeName).Equals(""))
+                if (DBCommands.GetAwardID(ToA.AwardTypeName).Equals(""))
                 {
                     ToA.IsNomination = false;
                     ToA.Frequency = NominationRows[C1][3].ToString();
-                    ToA.AwardNominationID = GetAwardNominationID(NominationRows[C1][4].ToString());
+                    ToA.AwardNominationID = DBCommands.GetAwardNominationID(NominationRows[C1][4].ToString());
                     ToAList.Add(ToA);
                 }
             }
@@ -212,10 +153,10 @@ namespace GUI_Design_Mockup
             {
                 StringList.Add(S);
                 dept = new Department();
-                if (GetDeptID(S) == "")
+                if (DBCommands.GetDeptID(S) == "")
                 {
                     dept.DeptName = S;
-                    NextNum = NextID("Department");
+                    NextNum = frmMainMenu.NextID("Department");
                     dept.DeptID = "DPT" + NextNum.ToString("0000000");
                     DeptList.Add(dept);
                 }
@@ -247,10 +188,10 @@ namespace GUI_Design_Mockup
             {
                 StringList.Add(S);
                 dept = new Department();
-                if (GetDeptID(S) == "")
+                if (DBCommands.GetDeptID(S) == "")
                 {
                     dept.DeptName = S;
-                    NextNum = NextID("Department");
+                    NextNum = frmMainMenu.NextID("Department");
                     dept.DeptID = "DPT" + NextNum.ToString("0000000");
 
                     DeptList.Add(dept);
@@ -286,11 +227,11 @@ namespace GUI_Design_Mockup
                 if (DR[3].ToString().Length > 0)
                     TempEmp.MiddleInitial = DR[3].ToString()[0];
                 TempEmp.Title = DR[4].ToString();
-                TempEmp.GroupID = GetGroupID(DR[5].ToString());
+                TempEmp.GroupID = DBCommands.GetGroupID(DR[5].ToString());
                 if (DR[6].ToString().Length > 0)
                     TempEmp.HR_FTE = double.Parse(DR[6].ToString());
                 TempEmp.IsDirector = DR[7].ToString().Equals("x", StringComparison.CurrentCultureIgnoreCase);
-                TempEmp.DeptID = GetDeptID(DR[8].ToString());
+                TempEmp.DeptID = DBCommands.GetDeptID(DR[8].ToString());
                 if (DR[9].ToString().Length > 0)
                     TempEmp.HireDate = DateTime.Parse(DR[9].ToString());
                 TempEmp.HR_Status = DR[10].ToString();
@@ -302,7 +243,7 @@ namespace GUI_Design_Mockup
                     TempEmp.OldAwardCount = (int)(double)DR[15];
                 TempEmp.DeptRecord = (bool)DR[16];
                 TempEmp.DateLastUpdated = DateTime.Today;
-                if(GetEmployeeID(TempEmp.PreferredName,TempEmp.LastName).Equals(""))
+                if (DBCommands.GetEmployeeID(TempEmp.PreferredName, TempEmp.LastName).Equals(""))
                 EmployeeList.Add(TempEmp);
             }
 
@@ -332,16 +273,16 @@ namespace GUI_Design_Mockup
                 TempAwd = new Award();
                 NextNum = (int)DR[0];
                 TempAwd.AwardID = "AWD" + NextNum.ToString("0000000");
-                if (!GetAwardExists(TempAwd.AwardID))
+                if (!DBCommands.GetAwardExists(TempAwd.AwardID))
                 {
                     TempAwd.AwardDate = (DateTime)DR[1];
-                    TempAwd.AwardTypeID = GetAwardID(DR[2].ToString());
+                    TempAwd.AwardTypeID = DBCommands.GetAwardID(DR[2].ToString());
                     NextNum = (int)DR[3];
                     TempAwd.RecipientID = "EMP" + NextNum.ToString("0000000");
                     NextNum = (int)DR[8];
                     TempAwd.NominatorID = "EMP" + NextNum.ToString("0000000");
                     TempAwd.Notes = DR[13].ToString();
-                    TempAwd.AwardDeptID = GetDeptID(DR[15].ToString());
+                    TempAwd.AwardDeptID = DBCommands.GetDeptID(DR[15].ToString());
                     AwardList.Add(TempAwd);
                 }
             }

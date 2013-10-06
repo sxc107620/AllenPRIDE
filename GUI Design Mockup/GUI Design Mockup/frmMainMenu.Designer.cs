@@ -36,8 +36,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.GroupNoBox = new System.Windows.Forms.ComboBox();
             this.DepartmentBox = new System.Windows.Forms.ComboBox();
             this.RecipientBox = new System.Windows.Forms.ComboBox();
@@ -65,6 +63,8 @@
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.EmployeeTableAdapter();
             this.button12 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pRIDE_beDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRIDEbeDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -134,24 +134,6 @@
             this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "Award Type:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(343, 161);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Select Start Date:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(346, 188);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Select End Date:";
             // 
             // GroupNoBox
             // 
@@ -255,6 +237,7 @@
             this.StartDateBox.Name = "StartDateBox";
             this.StartDateBox.Size = new System.Drawing.Size(99, 20);
             this.StartDateBox.TabIndex = 18;
+            this.StartDateBox.ValueChanged += new System.EventHandler(this.StartDateBox_ValueChanged);
             // 
             // EndDateBox
             // 
@@ -263,6 +246,7 @@
             this.EndDateBox.Name = "EndDateBox";
             this.EndDateBox.Size = new System.Drawing.Size(99, 20);
             this.EndDateBox.TabIndex = 19;
+            this.EndDateBox.ValueChanged += new System.EventHandler(this.EndDateBox_ValueChanged);
             // 
             // EmpAwdSumButton
             // 
@@ -395,11 +379,33 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(359, 160);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(74, 17);
+            this.checkBox1.TabIndex = 32;
+            this.checkBox1.Text = "Start Date";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(359, 189);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(71, 17);
+            this.checkBox2.TabIndex = 33;
+            this.checkBox2.Text = "End Date";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 508);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.PAAButton);
             this.Controls.Add(this.DOPButton);
@@ -423,8 +429,6 @@
             this.Controls.Add(this.RecipientBox);
             this.Controls.Add(this.DepartmentBox);
             this.Controls.Add(this.GroupNoBox);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -452,8 +456,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox GroupNoBox;
         private System.Windows.Forms.ComboBox DepartmentBox;
         private System.Windows.Forms.ComboBox RecipientBox;
@@ -481,6 +483,8 @@
         private System.Windows.Forms.BindingSource employeeBindingSource;
         private PRIDE_beDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

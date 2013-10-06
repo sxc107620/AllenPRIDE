@@ -15,9 +15,10 @@ namespace GUI_Design_Mockup
         List<Group> GroupList;
         List<Department> DeptList;
         List<Employee> EmpList;
+        List<Employee> EmpListA;
         List<Type_Of_Award> ToAList;
-
-        DataClasses1DataContext DContext;
+        DataConnectionClass DContext;
+        
 
         public frmMainMenu()
         {
@@ -43,7 +44,7 @@ namespace GUI_Design_Mockup
 
         private void button6_Click(object sender, EventArgs e)
         {
-            LaunchForm(new frmNewOnTheSpot());
+            LaunchForm(new frmNewAward());
         }
 
         private void frmMainMenu_Load(object sender, EventArgs e)
@@ -51,8 +52,8 @@ namespace GUI_Design_Mockup
             // TODO: This line of code loads data into the 'pRIDE_beDataSet.Employee' table. You can move, or remove it, as needed.
             this.employeeTableAdapter.Fill(this.pRIDE_beDataSet.Employee);
 
-            DContext = new DataClasses1DataContext();
-
+            DBCommands.DContext = new DataConnectionClass();
+            DContext = DBCommands.DContext;
             InitializeGroupBox();
             InitializeDeptBox();
             InitializeEmpBox();
@@ -61,7 +62,7 @@ namespace GUI_Design_Mockup
 
         private void InitializeGroupBox()
         {
-            var GroupListRaw = from G in DContext.Groups
+            var GroupListRaw = from G in DBCommands.DContext.Groups
                                orderby G.GroupID ascending
                                select G;
             GroupList = new List<Group>();
@@ -84,7 +85,7 @@ namespace GUI_Design_Mockup
 
         private void InitializeDeptBox()
         {
-            var DeptListRaw = from D in DContext.Departments
+            var DeptListRaw = from D in DBCommands.DContext.Departments
                               orderby D.DeptName ascending
                               select D;
             DeptList = new List<Department>();
@@ -105,28 +106,33 @@ namespace GUI_Design_Mockup
 
         private void InitializeEmpBox()
         {
-            var EmpListRaw = from E in DContext.Employees
+            var EmpListRaw = from E in DBCommands.DContext.Employees
                              orderby E.LastName ascending
                              select E;
             EmpList = new List<Employee>();
+
+            EmpListA = new List<Employee>();
 
             Employee AllEmployee;
             AllEmployee = new Employee();
             AllEmployee.EmployeeID = "EMP0000000";
             EmpList.Add(AllEmployee);
+            EmpListA.Add(AllEmployee);
 
             foreach (Employee E in EmpListRaw)
             {
-                EmpList.Add(E);
+                EmpList .Add(E);
+                EmpListA.Add(E);
             }
 
-            NominatorBox.DataSource = EmpList;
-            RecipientBox.DataSource = EmpList;
+
+            NominatorBox.DataSource = EmpList ;
+            RecipientBox.DataSource = EmpListA;
         }
 
         private void InitializeAwdBox()
         {
-            var AwdListRaw = from A in DContext.Type_Of_Awards
+            var AwdListRaw = from A in DBCommands.DContext.Type_Of_Awards
                              orderby A.AwardTypeName ascending
                              select A;
             ToAList = new List<Type_Of_Award >();
@@ -151,7 +157,90 @@ namespace GUI_Design_Mockup
 
         private void ReviewOTSButton_Click(object sender, EventArgs e)
         {
+            frmReviewOnTheSpot form = new frmReviewOnTheSpot();
+            List<Award> AwdList = new List<Award>();
+            string AwdID = DBCommands.GetAwardID("On The Spot");
+            var AwdListRawA = from N in DContext.Awards
+                              where N.AwardTypeID == AwdID
+                              select N;
 
+            Group GrpVal =(Group) GroupNoBox.SelectedItem;
+            if (GrpVal != null && !GrpVal.GroupID.Equals("GRP0000000", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var AwdListRawB = from N in AwdListRawA
+                                  join Emp in DContext.Employees on N.NominatorID equals Emp.EmployeeID
+                                  where Emp.GroupID == GrpVal.GroupID
+                                  select N;
+                AwdListRawA = AwdListRawB;
+            }
+
+            Department DptVal = (Department)DepartmentBox.SelectedItem;
+            if (DptVal != null && !DptVal.DeptID.Equals("DPT0000000", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var AwdListRawB = from N in AwdListRawA
+                                  where N.AwardDeptID == DptVal.DeptID
+                                  select N;
+                AwdListRawA = AwdListRawB;
+            }
+
+            Employee RecEmp = (Employee)RecipientBox.SelectedItem;
+            if (RecEmp != null && !RecEmp.EmployeeID.Equals("EMP0000000", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var AwdListRawB = from N in AwdListRawA
+                                  where N.RecipientID == RecEmp.EmployeeID
+                                  select N;
+                AwdListRawA = AwdListRawB;
+            }
+
+            Employee NomEmp = (Employee)NominatorBox.SelectedItem;
+            if (NomEmp != null && !NomEmp.EmployeeID.Equals("EMP0000000", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var AwdListRawB = from N in AwdListRawA
+                                  where N.NominatorID == NomEmp.EmployeeID
+                                  select N;
+                AwdListRawA = AwdListRawB;
+            }
+
+            if (checkBox1.Checked)
+            {
+                var AwdListRawB = from N in AwdListRawA
+                                  where N.AwardDate>=StartDateBox.Value
+                                  select N;
+                AwdListRawA = AwdListRawB;
+            }
+
+            if (checkBox2.Checked)
+            {
+                var AwdListRawB = from N in AwdListRawA
+                                  where N.AwardDate <= EndDateBox.Value
+                                  select N;
+                AwdListRawA = AwdListRawB;
+            }
+
+            foreach (Award A in AwdListRawA)
+                AwdList.Add(A);
+
+            form.StartThing(AwdList);
+            LaunchForm(form);
+        }
+
+        public static int NextID(string TableName)
+        {
+            var NextId = DBCommands.DContext.GetTable<NextID>().SingleOrDefault(p => p.TableName == TableName);
+            int result = (int)NextId.NextNum;
+            NextId.NextNum++;
+            DBCommands.DContext.SubmitChanges();
+            return result;
+        }
+
+        private void StartDateBox_ValueChanged(object sender, EventArgs e)
+        {
+            checkBox1.Checked = true;
+        }
+
+        private void EndDateBox_ValueChanged(object sender, EventArgs e)
+        {
+            checkBox2.Checked = true;
         }
     }
 }

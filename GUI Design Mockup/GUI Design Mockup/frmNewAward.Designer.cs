@@ -1,6 +1,6 @@
 ﻿namespace GUI_Design_Mockup
 {
-    partial class frmNewOnTheSpot
+    partial class frmNewAward
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.RecipientBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.NominatorBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.DepartmentBox = new System.Windows.Forms.TextBox();
+            this.NoteBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,13 +67,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Select Recipient";
             // 
-            // comboBox1
+            // RecipientBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(160, 55);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(278, 21);
-            this.comboBox1.TabIndex = 2;
+            this.RecipientBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.RecipientBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.RecipientBox.FormattingEnabled = true;
+            this.RecipientBox.Location = new System.Drawing.Point(160, 55);
+            this.RecipientBox.Name = "RecipientBox";
+            this.RecipientBox.Size = new System.Drawing.Size(278, 21);
+            this.RecipientBox.TabIndex = 2;
+            this.RecipientBox.SelectedIndexChanged += new System.EventHandler(this.RecipientBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -85,13 +88,15 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Recipient Dept:";
             // 
-            // comboBox2
+            // NominatorBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(160, 109);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(278, 21);
-            this.comboBox2.TabIndex = 4;
+            this.NominatorBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NominatorBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.NominatorBox.FormattingEnabled = true;
+            this.NominatorBox.Location = new System.Drawing.Point(160, 109);
+            this.NominatorBox.Name = "NominatorBox";
+            this.NominatorBox.Size = new System.Drawing.Size(278, 21);
+            this.NominatorBox.TabIndex = 4;
             // 
             // label4
             // 
@@ -103,21 +108,22 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Select Nominator:";
             // 
-            // textBox1
+            // DepartmentBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(160, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.DepartmentBox.Enabled = false;
+            this.DepartmentBox.Location = new System.Drawing.Point(160, 83);
+            this.DepartmentBox.Name = "DepartmentBox";
+            this.DepartmentBox.Size = new System.Drawing.Size(278, 20);
+            this.DepartmentBox.TabIndex = 6;
+            this.DepartmentBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // NoteBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(160, 162);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(278, 149);
-            this.textBox2.TabIndex = 7;
+            this.NoteBox.Location = new System.Drawing.Point(160, 162);
+            this.NoteBox.Multiline = true;
+            this.NoteBox.Name = "NoteBox";
+            this.NoteBox.Size = new System.Drawing.Size(278, 149);
+            this.NoteBox.TabIndex = 7;
             // 
             // label5
             // 
@@ -173,6 +179,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "Print Single On The Spot Award";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -182,6 +189,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "Print And Add Another Recipient";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label7
             // 
@@ -202,7 +210,7 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // NewOnTheSpot
+            // frmNewOnTheSpot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,15 +224,15 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NoteBox);
+            this.Controls.Add(this.DepartmentBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.NominatorBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.RecipientBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "NewOnTheSpot";
+            this.Name = "frmNewOnTheSpot";
             this.Text = "New On The Spot Award";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -235,12 +243,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox RecipientBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox NominatorBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox DepartmentBox;
+        private System.Windows.Forms.TextBox NoteBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;

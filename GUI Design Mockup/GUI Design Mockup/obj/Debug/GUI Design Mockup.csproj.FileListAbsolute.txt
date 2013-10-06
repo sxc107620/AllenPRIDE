@@ -31,8 +31,9 @@ C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI Design Mockup.csprojResolveAssemblyReference.cache
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmEmployees.resources
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmMainMenu.resources
-C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmNewOnTheSpot.resources
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmUpdateFromAccess.resources
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.Properties.Resources.resources
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmUpdateEmployees.resources
 C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI Design Mockup.csproj.GenerateResource.Cache
+C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmReviewOnTheSpot.resources
+C:\Users\Stephan\Documents\GitHub\AllenPRIDE\GUI Design Mockup\GUI Design Mockup\obj\Debug\GUI_Design_Mockup.frmNewAward.resources

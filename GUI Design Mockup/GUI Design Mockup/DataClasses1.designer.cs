@@ -23,7 +23,7 @@ namespace GUI_Design_Mockup
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="PRIDEProject")]
-	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
+	public partial class DataConnectionClass : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -56,31 +56,31 @@ namespace GUI_Design_Mockup
     partial void DeleteType_Of_Award(Type_Of_Award instance);
     #endregion
 		
-		public DataClasses1DataContext() : 
+		public DataConnectionClass() : 
 				base(global::GUI_Design_Mockup.Properties.Settings.Default.PRIDEProjectConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection) : 
+		public DataConnectionClass(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
+		public DataConnectionClass(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataConnectionClass(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataConnectionClass(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -969,8 +969,10 @@ namespace GUI_Design_Mockup
         {
             if (EmployeeID.Equals("EMP0000000"))
                 return "All Employees";
+            else if (EmployeeID.Equals("EMP-000001"))
+                return "Choose an employee";
             else
-                return this.LastName + ", " + this.PreferredName+" "+this.MiddleInitial;
+                return this.LastName + ", " + this.PreferredName + " " + this.MiddleInitial;
 
         }
 	}
