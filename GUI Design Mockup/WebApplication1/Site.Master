@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - My ASP.NET Application</title> 
+    <webopt:BundleReference runat="server" Path="~/Content/css" /> 
+    <webopt:BundleReference ID="BundleReference1" runat="server" Path="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> 
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>PRIDE</h2>
+            <p>
+                Employee nomination portal
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">PRIDE Nomination</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" runat="server">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="inputRecipiant">Recipiant</label>
+                                <div class="col-md-9">
+                                    <asp:TextBox id="inputRecipiant" class="form-control" placeholder="Recipiant" runat="server" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="inputDepartment">Department</label>
+                                <div class="col-md-9">
+                                    <asp:TextBox id="inputDepartment" class="form-control" placeholder="Department" runat="server" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="inputNominator">Nominator</label>
+                                <div class="col-md-9">
+                                    <asp:TextBox id="inputNominator" class="form-control" placeholder="Nominator" runat="server" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="inputDate">Date</label>
+                                <div class="col-md-9">
+                                    <asp:TextBox id="inputDate" class="form-control" placeholder="Date" runat="server" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="inputReason">Reason</label>
+                                <div class="col-md-9">
+                                    <asp:TextBox id="inputReason" class="form-control" placeholder="Reason" Rows="5" runat="server" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:button class="form-control" text="Submit" runat="server"></asp:button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
