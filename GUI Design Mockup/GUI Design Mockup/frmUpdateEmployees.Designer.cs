@@ -31,21 +31,20 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.OldAwdCountBox = new System.Windows.Forms.NumericUpDown();
+            this.TemporaryBox = new System.Windows.Forms.CheckBox();
+            this.ActiveBox = new System.Windows.Forms.CheckBox();
+            this.PrideEligibleBox = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.PrefNameBox = new System.Windows.Forms.TextBox();
+            this.EmpStatusBox = new System.Windows.Forms.TextBox();
+            this.EmpHireDateBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.EmpFTEBox = new System.Windows.Forms.TextBox();
+            this.EmpTitleBox = new System.Windows.Forms.TextBox();
+            this.EmpDeptBox = new System.Windows.Forms.TextBox();
+            this.EmpNameBox = new System.Windows.Forms.TextBox();
+            this.EmpIDBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -61,9 +60,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.GroupNoBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OldAwdCountBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,25 +74,26 @@
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(396, 33);
             this.hScrollBar1.TabIndex = 0;
+            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.GroupNoBox);
             this.panel1.Controls.Add(this.numericUpDown2);
-            this.panel1.Controls.Add(this.numericUpDown1);
-            this.panel1.Controls.Add(this.checkBox3);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.OldAwdCountBox);
+            this.panel1.Controls.Add(this.TemporaryBox);
+            this.panel1.Controls.Add(this.ActiveBox);
+            this.panel1.Controls.Add(this.PrideEligibleBox);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.PrefNameBox);
+            this.panel1.Controls.Add(this.EmpStatusBox);
+            this.panel1.Controls.Add(this.EmpHireDateBox);
             this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.EmpFTEBox);
+            this.panel1.Controls.Add(this.EmpTitleBox);
+            this.panel1.Controls.Add(this.EmpDeptBox);
+            this.panel1.Controls.Add(this.EmpNameBox);
+            this.panel1.Controls.Add(this.EmpIDBox);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
@@ -119,42 +120,42 @@
             this.numericUpDown2.Size = new System.Drawing.Size(110, 20);
             this.numericUpDown2.TabIndex = 28;
             // 
-            // numericUpDown1
+            // OldAwdCountBox
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(202, 270);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(110, 20);
-            this.numericUpDown1.TabIndex = 27;
+            this.OldAwdCountBox.Location = new System.Drawing.Point(202, 270);
+            this.OldAwdCountBox.Name = "OldAwdCountBox";
+            this.OldAwdCountBox.Size = new System.Drawing.Size(110, 20);
+            this.OldAwdCountBox.TabIndex = 27;
             // 
-            // checkBox3
+            // TemporaryBox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(236, 246);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(76, 17);
-            this.checkBox3.TabIndex = 26;
-            this.checkBox3.Text = "Temporary";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.TemporaryBox.AutoSize = true;
+            this.TemporaryBox.Location = new System.Drawing.Point(236, 246);
+            this.TemporaryBox.Name = "TemporaryBox";
+            this.TemporaryBox.Size = new System.Drawing.Size(76, 17);
+            this.TemporaryBox.TabIndex = 26;
+            this.TemporaryBox.Text = "Temporary";
+            this.TemporaryBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // ActiveBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(174, 246);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(56, 17);
-            this.checkBox2.TabIndex = 25;
-            this.checkBox2.Text = "Active";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.ActiveBox.AutoSize = true;
+            this.ActiveBox.Location = new System.Drawing.Point(174, 246);
+            this.ActiveBox.Name = "ActiveBox";
+            this.ActiveBox.Size = new System.Drawing.Size(56, 17);
+            this.ActiveBox.TabIndex = 25;
+            this.ActiveBox.Text = "Active";
+            this.ActiveBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // PrideEligibleBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(15, 246);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(156, 17);
-            this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "You Showed Pride Eligibility";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.PrideEligibleBox.AutoSize = true;
+            this.PrideEligibleBox.Location = new System.Drawing.Point(15, 246);
+            this.PrideEligibleBox.Name = "PrideEligibleBox";
+            this.PrideEligibleBox.Size = new System.Drawing.Size(156, 17);
+            this.PrideEligibleBox.TabIndex = 24;
+            this.PrideEligibleBox.Text = "You Showed Pride Eligibility";
+            this.PrideEligibleBox.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -166,35 +167,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox9
+            // PrefNameBox
             // 
-            this.textBox9.Location = new System.Drawing.Point(102, 220);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(154, 20);
-            this.textBox9.TabIndex = 22;
+            this.PrefNameBox.Location = new System.Drawing.Point(102, 194);
+            this.PrefNameBox.Name = "PrefNameBox";
+            this.PrefNameBox.Size = new System.Drawing.Size(154, 20);
+            this.PrefNameBox.TabIndex = 21;
             // 
-            // textBox8
+            // EmpStatusBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(102, 194);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(154, 20);
-            this.textBox8.TabIndex = 21;
+            this.EmpStatusBox.Enabled = false;
+            this.EmpStatusBox.Location = new System.Drawing.Point(303, 138);
+            this.EmpStatusBox.Name = "EmpStatusBox";
+            this.EmpStatusBox.Size = new System.Drawing.Size(132, 20);
+            this.EmpStatusBox.TabIndex = 20;
             // 
-            // textBox7
+            // EmpHireDateBox
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(303, 138);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(132, 20);
-            this.textBox7.TabIndex = 20;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(169, 138);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(87, 20);
-            this.textBox6.TabIndex = 19;
+            this.EmpHireDateBox.Enabled = false;
+            this.EmpHireDateBox.Location = new System.Drawing.Point(169, 138);
+            this.EmpHireDateBox.Name = "EmpHireDateBox";
+            this.EmpHireDateBox.Size = new System.Drawing.Size(87, 20);
+            this.EmpHireDateBox.TabIndex = 19;
             // 
             // label15
             // 
@@ -205,45 +199,45 @@
             this.label15.TabIndex = 18;
             this.label15.Text = "FTE:";
             // 
-            // textBox5
+            // EmpFTEBox
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(51, 138);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(59, 20);
-            this.textBox5.TabIndex = 17;
+            this.EmpFTEBox.Enabled = false;
+            this.EmpFTEBox.Location = new System.Drawing.Point(51, 138);
+            this.EmpFTEBox.Name = "EmpFTEBox";
+            this.EmpFTEBox.Size = new System.Drawing.Size(59, 20);
+            this.EmpFTEBox.TabIndex = 17;
             // 
-            // textBox4
+            // EmpTitleBox
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(51, 112);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(384, 20);
-            this.textBox4.TabIndex = 16;
+            this.EmpTitleBox.Enabled = false;
+            this.EmpTitleBox.Location = new System.Drawing.Point(51, 112);
+            this.EmpTitleBox.Name = "EmpTitleBox";
+            this.EmpTitleBox.Size = new System.Drawing.Size(384, 20);
+            this.EmpTitleBox.TabIndex = 16;
             // 
-            // textBox3
+            // EmpDeptBox
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(51, 86);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(384, 20);
-            this.textBox3.TabIndex = 15;
+            this.EmpDeptBox.Enabled = false;
+            this.EmpDeptBox.Location = new System.Drawing.Point(51, 86);
+            this.EmpDeptBox.Name = "EmpDeptBox";
+            this.EmpDeptBox.Size = new System.Drawing.Size(384, 20);
+            this.EmpDeptBox.TabIndex = 15;
             // 
-            // textBox2
+            // EmpNameBox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(169, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(266, 20);
-            this.textBox2.TabIndex = 14;
+            this.EmpNameBox.Enabled = false;
+            this.EmpNameBox.Location = new System.Drawing.Point(169, 60);
+            this.EmpNameBox.Name = "EmpNameBox";
+            this.EmpNameBox.Size = new System.Drawing.Size(266, 20);
+            this.EmpNameBox.TabIndex = 14;
             // 
-            // textBox1
+            // EmpIDBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(39, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(80, 20);
-            this.textBox1.TabIndex = 13;
+            this.EmpIDBox.Enabled = false;
+            this.EmpIDBox.Location = new System.Drawing.Point(39, 60);
+            this.EmpIDBox.Name = "EmpIDBox";
+            this.EmpIDBox.Size = new System.Drawing.Size(80, 20);
+            this.EmpIDBox.TabIndex = 13;
             // 
             // label14
             // 
@@ -387,6 +381,14 @@
             this.label1.Text = "X of Y";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // GroupNoBox
+            // 
+            this.GroupNoBox.FormattingEnabled = true;
+            this.GroupNoBox.Location = new System.Drawing.Point(102, 219);
+            this.GroupNoBox.Name = "GroupNoBox";
+            this.GroupNoBox.Size = new System.Drawing.Size(154, 21);
+            this.GroupNoBox.TabIndex = 29;
+            // 
             // frmUpdateEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,12 +396,14 @@
             this.ClientSize = new System.Drawing.Size(453, 363);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUpdateEmployees";
             this.Text = "Update Employees";
+            this.Load += new System.EventHandler(this.frmUpdateEmployees_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OldAwdCountBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -414,21 +418,20 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown OldAwdCountBox;
+        private System.Windows.Forms.CheckBox TemporaryBox;
+        private System.Windows.Forms.CheckBox ActiveBox;
+        private System.Windows.Forms.CheckBox PrideEligibleBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox PrefNameBox;
+        private System.Windows.Forms.TextBox EmpStatusBox;
+        private System.Windows.Forms.TextBox EmpHireDateBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox EmpFTEBox;
+        private System.Windows.Forms.TextBox EmpTitleBox;
+        private System.Windows.Forms.TextBox EmpDeptBox;
+        private System.Windows.Forms.TextBox EmpNameBox;
+        private System.Windows.Forms.TextBox EmpIDBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -440,5 +443,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox GroupNoBox;
     }
 }

@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PRIDEProject" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DOOMSDAYMACHINE;Initial Catalog=PRIDEProject;Integrated Security=True" SettingsObjectName="GUI_Design_Mockup.Properties.Settings" SettingsPropertyName="PRIDEProjectConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Award" Member="Awards">
-    <Type Name="Award">
-      <Column Name="AwardID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AwardTypeID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="RecipientID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="NominatorID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="AwardDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AwardDeptID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Department" Member="Departments">
     <Type Name="Department">
       <Column Name="DeptID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -77,6 +66,16 @@
       <Column Name="IsNomination" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Frequency" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="AwardNominationID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Award" Member="Awards">
+    <Type Name="Award">
+      <Column Name="AwardID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AwardTypeID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipientID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NominatorID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AwardDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

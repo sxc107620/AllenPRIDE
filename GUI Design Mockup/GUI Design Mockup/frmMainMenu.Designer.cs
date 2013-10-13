@@ -322,6 +322,7 @@
             this.YSPButton.TabIndex = 27;
             this.YSPButton.Text = "You Showed Pride";
             this.YSPButton.UseVisualStyleBackColor = true;
+            this.YSPButton.Click += new System.EventHandler(this.YSPButton_Click);
             // 
             // DWPButton
             // 
@@ -331,6 +332,7 @@
             this.DWPButton.TabIndex = 28;
             this.DWPButton.Text = "Dinner With Pride";
             this.DWPButton.UseVisualStyleBackColor = true;
+            this.DWPButton.Click += new System.EventHandler(this.DWPButton_Click);
             // 
             // DOPButton
             // 
@@ -340,6 +342,7 @@
             this.DOPButton.TabIndex = 29;
             this.DOPButton.Text = "Day Of Pride";
             this.DOPButton.UseVisualStyleBackColor = true;
+            this.DOPButton.Click += new System.EventHandler(this.DOPButton_Click);
             // 
             // PAAButton
             // 
@@ -349,6 +352,7 @@
             this.PAAButton.TabIndex = 30;
             this.PAAButton.Text = "PRIDE Annual Awards";
             this.PAAButton.UseVisualStyleBackColor = true;
+            this.PAAButton.Click += new System.EventHandler(this.PAAButton_Click);
             // 
             // pRIDE_beDataSet
             // 
@@ -436,6 +440,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMainMenu";
             this.Text = "City of Allen PRIDE Database Ver. 3";
             this.Load += new System.EventHandler(this.frmMainMenu_Load);

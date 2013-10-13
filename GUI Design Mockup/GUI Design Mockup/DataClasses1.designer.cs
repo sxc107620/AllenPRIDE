@@ -30,9 +30,6 @@ namespace GUI_Design_Mockup
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAward(Award instance);
-    partial void UpdateAward(Award instance);
-    partial void DeleteAward(Award instance);
     partial void InsertDepartment(Department instance);
     partial void UpdateDepartment(Department instance);
     partial void DeleteDepartment(Department instance);
@@ -54,6 +51,9 @@ namespace GUI_Design_Mockup
     partial void InsertType_Of_Award(Type_Of_Award instance);
     partial void UpdateType_Of_Award(Type_Of_Award instance);
     partial void DeleteType_Of_Award(Type_Of_Award instance);
+    partial void InsertAward(Award instance);
+    partial void UpdateAward(Award instance);
+    partial void DeleteAward(Award instance);
     #endregion
 		
 		public DataConnectionClass() : 
@@ -84,14 +84,6 @@ namespace GUI_Design_Mockup
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Award> Awards
-		{
-			get
-			{
-				return this.GetTable<Award>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Department> Departments
@@ -149,210 +141,12 @@ namespace GUI_Design_Mockup
 				return this.GetTable<Type_Of_Award>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Award")]
-	public partial class Award : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _AwardID;
-		
-		private string _AwardTypeID;
-		
-		private string _RecipientID;
-		
-		private string _NominatorID;
-		
-		private System.Nullable<System.DateTime> _AwardDate;
-		
-		private string _Notes;
-		
-		private string _AwardDeptID;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAwardIDChanging(string value);
-    partial void OnAwardIDChanged();
-    partial void OnAwardTypeIDChanging(string value);
-    partial void OnAwardTypeIDChanged();
-    partial void OnRecipientIDChanging(string value);
-    partial void OnRecipientIDChanged();
-    partial void OnNominatorIDChanging(string value);
-    partial void OnNominatorIDChanged();
-    partial void OnAwardDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnAwardDateChanged();
-    partial void OnNotesChanging(string value);
-    partial void OnNotesChanged();
-    partial void OnAwardDeptIDChanging(string value);
-    partial void OnAwardDeptIDChanged();
-    #endregion
-		
-		public Award()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardID", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string AwardID
+		public System.Data.Linq.Table<Award> Awards
 		{
 			get
 			{
-				return this._AwardID;
-			}
-			set
-			{
-				if ((this._AwardID != value))
-				{
-					this.OnAwardIDChanging(value);
-					this.SendPropertyChanging();
-					this._AwardID = value;
-					this.SendPropertyChanged("AwardID");
-					this.OnAwardIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardTypeID", DbType="Char(10) NOT NULL", CanBeNull=false)]
-		public string AwardTypeID
-		{
-			get
-			{
-				return this._AwardTypeID;
-			}
-			set
-			{
-				if ((this._AwardTypeID != value))
-				{
-					this.OnAwardTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._AwardTypeID = value;
-					this.SendPropertyChanged("AwardTypeID");
-					this.OnAwardTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipientID", DbType="Char(10) NOT NULL", CanBeNull=false)]
-		public string RecipientID
-		{
-			get
-			{
-				return this._RecipientID;
-			}
-			set
-			{
-				if ((this._RecipientID != value))
-				{
-					this.OnRecipientIDChanging(value);
-					this.SendPropertyChanging();
-					this._RecipientID = value;
-					this.SendPropertyChanged("RecipientID");
-					this.OnRecipientIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NominatorID", DbType="Char(10) NOT NULL", CanBeNull=false)]
-		public string NominatorID
-		{
-			get
-			{
-				return this._NominatorID;
-			}
-			set
-			{
-				if ((this._NominatorID != value))
-				{
-					this.OnNominatorIDChanging(value);
-					this.SendPropertyChanging();
-					this._NominatorID = value;
-					this.SendPropertyChanged("NominatorID");
-					this.OnNominatorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardDate", DbType="Date")]
-		public System.Nullable<System.DateTime> AwardDate
-		{
-			get
-			{
-				return this._AwardDate;
-			}
-			set
-			{
-				if ((this._AwardDate != value))
-				{
-					this.OnAwardDateChanging(value);
-					this.SendPropertyChanging();
-					this._AwardDate = value;
-					this.SendPropertyChanged("AwardDate");
-					this.OnAwardDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(MAX)")]
-		public string Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				if ((this._Notes != value))
-				{
-					this.OnNotesChanging(value);
-					this.SendPropertyChanging();
-					this._Notes = value;
-					this.SendPropertyChanged("Notes");
-					this.OnNotesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardDeptID", DbType="Char(10) NOT NULL", CanBeNull=false)]
-		public string AwardDeptID
-		{
-			get
-			{
-				return this._AwardDeptID;
-			}
-			set
-			{
-				if ((this._AwardDeptID != value))
-				{
-					this.OnAwardDeptIDChanging(value);
-					this.SendPropertyChanging();
-					this._AwardDeptID = value;
-					this.SendPropertyChanged("AwardDeptID");
-					this.OnAwardDeptIDChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Award>();
 			}
 		}
 	}
@@ -468,7 +262,7 @@ namespace GUI_Design_Mockup
 
         public override string ToString()
         {
-            return this.DeptName;
+            return DeptName;
         }
 	}
 	
@@ -967,13 +761,15 @@ namespace GUI_Design_Mockup
 
         public override string ToString()
         {
-            if (EmployeeID.Equals("EMP0000000"))
-                return "All Employees";
-            else if (EmployeeID.Equals("EMP-000001"))
-                return "Choose an employee";
+            string Result = "";
+            if (EmployeeID == "EMP0000000")
+                Result = "All Employees";
+            else if (EmployeeID == "EMP-000001")
+                Result = "Select an Employee";
             else
-                return this.LastName + ", " + this.PreferredName + " " + this.MiddleInitial;
+                Result = PreferredName + " " + LastName;
 
+            return Result;
         }
 	}
 	
@@ -1088,7 +884,7 @@ namespace GUI_Design_Mockup
 
         public override string ToString()
         {
-           return this.GroupNum;
+            return GroupNum;
         }
 	}
 	
@@ -1606,6 +1402,193 @@ namespace GUI_Design_Mockup
         public override string ToString()
         {
             return AwardTypeName;
+        }
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Award")]
+	public partial class Award : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _AwardID;
+		
+		private string _AwardTypeID;
+		
+		private string _RecipientID;
+		
+		private string _NominatorID;
+		
+		private System.Nullable<System.DateTime> _AwardDate;
+		
+		private string _Notes;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAwardIDChanging(string value);
+    partial void OnAwardIDChanged();
+    partial void OnAwardTypeIDChanging(string value);
+    partial void OnAwardTypeIDChanged();
+    partial void OnRecipientIDChanging(string value);
+    partial void OnRecipientIDChanged();
+    partial void OnNominatorIDChanging(string value);
+    partial void OnNominatorIDChanged();
+    partial void OnAwardDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAwardDateChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    #endregion
+		
+		public Award()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardID", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string AwardID
+		{
+			get
+			{
+				return this._AwardID;
+			}
+			set
+			{
+				if ((this._AwardID != value))
+				{
+					this.OnAwardIDChanging(value);
+					this.SendPropertyChanging();
+					this._AwardID = value;
+					this.SendPropertyChanged("AwardID");
+					this.OnAwardIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardTypeID", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string AwardTypeID
+		{
+			get
+			{
+				return this._AwardTypeID;
+			}
+			set
+			{
+				if ((this._AwardTypeID != value))
+				{
+					this.OnAwardTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._AwardTypeID = value;
+					this.SendPropertyChanged("AwardTypeID");
+					this.OnAwardTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipientID", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string RecipientID
+		{
+			get
+			{
+				return this._RecipientID;
+			}
+			set
+			{
+				if ((this._RecipientID != value))
+				{
+					this.OnRecipientIDChanging(value);
+					this.SendPropertyChanging();
+					this._RecipientID = value;
+					this.SendPropertyChanged("RecipientID");
+					this.OnRecipientIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NominatorID", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string NominatorID
+		{
+			get
+			{
+				return this._NominatorID;
+			}
+			set
+			{
+				if ((this._NominatorID != value))
+				{
+					this.OnNominatorIDChanging(value);
+					this.SendPropertyChanging();
+					this._NominatorID = value;
+					this.SendPropertyChanged("NominatorID");
+					this.OnNominatorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwardDate", DbType="Date")]
+		public System.Nullable<System.DateTime> AwardDate
+		{
+			get
+			{
+				return this._AwardDate;
+			}
+			set
+			{
+				if ((this._AwardDate != value))
+				{
+					this.OnAwardDateChanging(value);
+					this.SendPropertyChanging();
+					this._AwardDate = value;
+					this.SendPropertyChanged("AwardDate");
+					this.OnAwardDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(MAX)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+        public override string ToString()
+        {
+            return AwardID;
         }
 	}
 }

@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.EmployeeDataGrid = new System.Windows.Forms.DataGridView();
-            this.EmployeeAwardDataGrid = new System.Windows.Forms.DataGridView();
-            this.GroupsDataGrid = new System.Windows.Forms.DataGridView();
-            this.AwardDataGrid = new System.Windows.Forms.DataGridView();
-            this.pRIDE_beDataSet = new GUI_Design_Mockup.PRIDE_beDataSet();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.EmployeeTableAdapter();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hRFirstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hRLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +53,9 @@
             this.groupNoOLDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedFirstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeAwardBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeAwardTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.EmployeeAwardTableAdapter();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pRIDE_beDataSet = new GUI_Design_Mockup.PRIDE_beDataSet();
+            this.EmployeeAwardDataGrid = new System.Windows.Forms.DataGridView();
             this.employeeAwardIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.awardDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeOfAwardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,29 +76,34 @@
             this.nominatorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedRecipentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedNominatorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupsTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.GroupsTableAdapter();
+            this.employeeAwardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GroupsDataGrid = new System.Windows.Forms.DataGridView();
             this.hRGroupNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hRDayOfPrideGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortFieldDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeOfAwardBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.typeOfAwardTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.TypeOfAwardTableAdapter();
+            this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AwardDataGrid = new System.Windows.Forms.DataGridView();
             this.typeOfAwardDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortFieldDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.frequencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.awardNominationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeOfAwardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.EmployeeTableAdapter();
+            this.employeeAwardTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.EmployeeAwardTableAdapter();
+            this.groupsTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.GroupsTableAdapter();
+            this.typeOfAwardTableAdapter = new GUI_Design_Mockup.PRIDE_beDataSetTableAdapters.TypeOfAwardTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeeAwardDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AwardDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pRIDE_beDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRIDE_beDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeAwardDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeAwardBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AwardDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeOfAwardBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,81 +140,6 @@
             this.EmployeeDataGrid.Name = "EmployeeDataGrid";
             this.EmployeeDataGrid.Size = new System.Drawing.Size(240, 150);
             this.EmployeeDataGrid.TabIndex = 0;
-            // 
-            // EmployeeAwardDataGrid
-            // 
-            this.EmployeeAwardDataGrid.AutoGenerateColumns = false;
-            this.EmployeeAwardDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EmployeeAwardDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.employeeAwardIDDataGridViewTextBoxColumn,
-            this.awardDateDataGridViewTextBoxColumn,
-            this.typeOfAwardDataGridViewTextBoxColumn,
-            this.recipientIDDataGridViewTextBoxColumn,
-            this.recipientPreferredNameDataGridViewTextBoxColumn,
-            this.recipientLastNameDataGridViewTextBoxColumn,
-            this.recipientDeptDataGridViewTextBoxColumn,
-            this.recipientGroupNoDataGridViewTextBoxColumn,
-            this.nominatorIDDataGridViewTextBoxColumn,
-            this.nominatorPreferredNameDataGridViewTextBoxColumn,
-            this.nominatorLastNameDataGridViewTextBoxColumn,
-            this.nominatorDeptDataGridViewTextBoxColumn,
-            this.nominatorGroupNoDataGridViewTextBoxColumn,
-            this.notesDataGridViewTextBoxColumn,
-            this.recipientNameDataGridViewTextBoxColumn,
-            this.departmentDataGridViewTextBoxColumn,
-            this.groupNoDataGridViewTextBoxColumn,
-            this.nominatorNameDataGridViewTextBoxColumn,
-            this.updatedRecipentNameDataGridViewTextBoxColumn,
-            this.updatedNominatorNameDataGridViewTextBoxColumn});
-            this.EmployeeAwardDataGrid.DataSource = this.employeeAwardBindingSource;
-            this.EmployeeAwardDataGrid.Location = new System.Drawing.Point(258, 12);
-            this.EmployeeAwardDataGrid.Name = "EmployeeAwardDataGrid";
-            this.EmployeeAwardDataGrid.Size = new System.Drawing.Size(240, 150);
-            this.EmployeeAwardDataGrid.TabIndex = 1;
-            // 
-            // GroupsDataGrid
-            // 
-            this.GroupsDataGrid.AutoGenerateColumns = false;
-            this.GroupsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GroupsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.hRGroupNoDataGridViewTextBoxColumn1,
-            this.hRDayOfPrideGroupDataGridViewTextBoxColumn,
-            this.sortFieldDataGridViewTextBoxColumn});
-            this.GroupsDataGrid.DataSource = this.groupsBindingSource;
-            this.GroupsDataGrid.Location = new System.Drawing.Point(12, 168);
-            this.GroupsDataGrid.Name = "GroupsDataGrid";
-            this.GroupsDataGrid.Size = new System.Drawing.Size(240, 150);
-            this.GroupsDataGrid.TabIndex = 2;
-            // 
-            // AwardDataGrid
-            // 
-            this.AwardDataGrid.AutoGenerateColumns = false;
-            this.AwardDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AwardDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.typeOfAwardDataGridViewTextBoxColumn1,
-            this.sortFieldDataGridViewTextBoxColumn1,
-            this.categoryDataGridViewTextBoxColumn,
-            this.frequencyDataGridViewTextBoxColumn,
-            this.awardNominationDataGridViewTextBoxColumn});
-            this.AwardDataGrid.DataSource = this.typeOfAwardBindingSource;
-            this.AwardDataGrid.Location = new System.Drawing.Point(258, 168);
-            this.AwardDataGrid.Name = "AwardDataGrid";
-            this.AwardDataGrid.Size = new System.Drawing.Size(240, 150);
-            this.AwardDataGrid.TabIndex = 3;
-            // 
-            // pRIDE_beDataSet
-            // 
-            this.pRIDE_beDataSet.DataSetName = "PRIDE_beDataSet";
-            this.pRIDE_beDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataMember = "Employee";
-            this.employeeBindingSource.DataSource = this.pRIDE_beDataSet;
-            // 
-            // employeeTableAdapter
-            // 
-            this.employeeTableAdapter.ClearBeforeFill = true;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -354,14 +279,46 @@
             this.updatedLastNameDataGridViewTextBoxColumn.HeaderText = "UpdatedLastName";
             this.updatedLastNameDataGridViewTextBoxColumn.Name = "updatedLastNameDataGridViewTextBoxColumn";
             // 
-            // employeeAwardBindingSource
+            // employeeBindingSource
             // 
-            this.employeeAwardBindingSource.DataMember = "EmployeeAward";
-            this.employeeAwardBindingSource.DataSource = this.pRIDE_beDataSet;
+            this.employeeBindingSource.DataMember = "Employee";
+            this.employeeBindingSource.DataSource = this.pRIDE_beDataSet;
             // 
-            // employeeAwardTableAdapter
+            // pRIDE_beDataSet
             // 
-            this.employeeAwardTableAdapter.ClearBeforeFill = true;
+            this.pRIDE_beDataSet.DataSetName = "PRIDE_beDataSet";
+            this.pRIDE_beDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // EmployeeAwardDataGrid
+            // 
+            this.EmployeeAwardDataGrid.AutoGenerateColumns = false;
+            this.EmployeeAwardDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EmployeeAwardDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employeeAwardIDDataGridViewTextBoxColumn,
+            this.awardDateDataGridViewTextBoxColumn,
+            this.typeOfAwardDataGridViewTextBoxColumn,
+            this.recipientIDDataGridViewTextBoxColumn,
+            this.recipientPreferredNameDataGridViewTextBoxColumn,
+            this.recipientLastNameDataGridViewTextBoxColumn,
+            this.recipientDeptDataGridViewTextBoxColumn,
+            this.recipientGroupNoDataGridViewTextBoxColumn,
+            this.nominatorIDDataGridViewTextBoxColumn,
+            this.nominatorPreferredNameDataGridViewTextBoxColumn,
+            this.nominatorLastNameDataGridViewTextBoxColumn,
+            this.nominatorDeptDataGridViewTextBoxColumn,
+            this.nominatorGroupNoDataGridViewTextBoxColumn,
+            this.notesDataGridViewTextBoxColumn,
+            this.recipientNameDataGridViewTextBoxColumn,
+            this.departmentDataGridViewTextBoxColumn,
+            this.groupNoDataGridViewTextBoxColumn,
+            this.nominatorNameDataGridViewTextBoxColumn,
+            this.updatedRecipentNameDataGridViewTextBoxColumn,
+            this.updatedNominatorNameDataGridViewTextBoxColumn});
+            this.EmployeeAwardDataGrid.DataSource = this.employeeAwardBindingSource;
+            this.EmployeeAwardDataGrid.Location = new System.Drawing.Point(258, 12);
+            this.EmployeeAwardDataGrid.Name = "EmployeeAwardDataGrid";
+            this.EmployeeAwardDataGrid.Size = new System.Drawing.Size(240, 150);
+            this.EmployeeAwardDataGrid.TabIndex = 1;
             // 
             // employeeAwardIDDataGridViewTextBoxColumn
             // 
@@ -483,14 +440,24 @@
             this.updatedNominatorNameDataGridViewTextBoxColumn.HeaderText = "UpdatedNominatorName";
             this.updatedNominatorNameDataGridViewTextBoxColumn.Name = "updatedNominatorNameDataGridViewTextBoxColumn";
             // 
-            // groupsBindingSource
+            // employeeAwardBindingSource
             // 
-            this.groupsBindingSource.DataMember = "Groups";
-            this.groupsBindingSource.DataSource = this.pRIDE_beDataSet;
+            this.employeeAwardBindingSource.DataMember = "EmployeeAward";
+            this.employeeAwardBindingSource.DataSource = this.pRIDE_beDataSet;
             // 
-            // groupsTableAdapter
+            // GroupsDataGrid
             // 
-            this.groupsTableAdapter.ClearBeforeFill = true;
+            this.GroupsDataGrid.AutoGenerateColumns = false;
+            this.GroupsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GroupsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hRGroupNoDataGridViewTextBoxColumn1,
+            this.hRDayOfPrideGroupDataGridViewTextBoxColumn,
+            this.sortFieldDataGridViewTextBoxColumn});
+            this.GroupsDataGrid.DataSource = this.groupsBindingSource;
+            this.GroupsDataGrid.Location = new System.Drawing.Point(12, 168);
+            this.GroupsDataGrid.Name = "GroupsDataGrid";
+            this.GroupsDataGrid.Size = new System.Drawing.Size(240, 150);
+            this.GroupsDataGrid.TabIndex = 2;
             // 
             // hRGroupNoDataGridViewTextBoxColumn1
             // 
@@ -510,14 +477,26 @@
             this.sortFieldDataGridViewTextBoxColumn.HeaderText = "SortField";
             this.sortFieldDataGridViewTextBoxColumn.Name = "sortFieldDataGridViewTextBoxColumn";
             // 
-            // typeOfAwardBindingSource
+            // groupsBindingSource
             // 
-            this.typeOfAwardBindingSource.DataMember = "TypeOfAward";
-            this.typeOfAwardBindingSource.DataSource = this.pRIDE_beDataSet;
+            this.groupsBindingSource.DataMember = "Groups";
+            this.groupsBindingSource.DataSource = this.pRIDE_beDataSet;
             // 
-            // typeOfAwardTableAdapter
+            // AwardDataGrid
             // 
-            this.typeOfAwardTableAdapter.ClearBeforeFill = true;
+            this.AwardDataGrid.AutoGenerateColumns = false;
+            this.AwardDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AwardDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.typeOfAwardDataGridViewTextBoxColumn1,
+            this.sortFieldDataGridViewTextBoxColumn1,
+            this.categoryDataGridViewTextBoxColumn,
+            this.frequencyDataGridViewTextBoxColumn,
+            this.awardNominationDataGridViewTextBoxColumn});
+            this.AwardDataGrid.DataSource = this.typeOfAwardBindingSource;
+            this.AwardDataGrid.Location = new System.Drawing.Point(258, 168);
+            this.AwardDataGrid.Name = "AwardDataGrid";
+            this.AwardDataGrid.Size = new System.Drawing.Size(240, 150);
+            this.AwardDataGrid.TabIndex = 3;
             // 
             // typeOfAwardDataGridViewTextBoxColumn1
             // 
@@ -548,6 +527,27 @@
             this.awardNominationDataGridViewTextBoxColumn.DataPropertyName = "AwardNomination";
             this.awardNominationDataGridViewTextBoxColumn.HeaderText = "AwardNomination";
             this.awardNominationDataGridViewTextBoxColumn.Name = "awardNominationDataGridViewTextBoxColumn";
+            // 
+            // typeOfAwardBindingSource
+            // 
+            this.typeOfAwardBindingSource.DataMember = "TypeOfAward";
+            this.typeOfAwardBindingSource.DataSource = this.pRIDE_beDataSet;
+            // 
+            // employeeTableAdapter
+            // 
+            this.employeeTableAdapter.ClearBeforeFill = true;
+            // 
+            // employeeAwardTableAdapter
+            // 
+            this.employeeAwardTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupsTableAdapter
+            // 
+            this.groupsTableAdapter.ClearBeforeFill = true;
+            // 
+            // typeOfAwardTableAdapter
+            // 
+            this.typeOfAwardTableAdapter.ClearBeforeFill = true;
             // 
             // button1
             // 
@@ -591,17 +591,18 @@
             this.Controls.Add(this.GroupsDataGrid);
             this.Controls.Add(this.EmployeeAwardDataGrid);
             this.Controls.Add(this.EmployeeDataGrid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUpdateFromAccess";
             this.Text = "frmUpdateFromAccess";
             this.Load += new System.EventHandler(this.frmUpdateFromAccess_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeeAwardDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AwardDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pRIDE_beDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRIDE_beDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeAwardDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeAwardBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AwardDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeOfAwardBindingSource)).EndInit();
             this.ResumeLayout(false);
 

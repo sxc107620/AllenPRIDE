@@ -15,6 +15,7 @@ namespace GUI_Design_Mockup
         List<Department> DeptList;
         List<Employee> EmpList;
         List<Employee> EmpListA;
+        List<Type_Of_Award> AwardTypeList;
         DataConnectionClass DContext;
 
         public frmNewAward(string AwardName="On The Spot")
@@ -23,9 +24,18 @@ namespace GUI_Design_Mockup
             DContext = DBCommands.DContext;
             InitializeDeptBox();
             InitializeEmpBox();
+            InitializeTypeOfAwardBox(AwardName);
             Text = "New "+AwardName + " Award";
             label1.Text = AwardName + " Award";
-            textBox3.Text = AwardName;
+            if (!AwardName.Equals("On The Spot", StringComparison.CurrentCultureIgnoreCase))
+            {
+                button3.Visible = false;
+                button1.Visible = false;
+                label7.Visible = false;
+                button2.Text = "Submit " + AwardName;
+                comboBox1.Location = new Point(251,137);
+                comboBox1.Size = new Size(187, 21);
+            }
         }
 
 
@@ -86,23 +96,35 @@ namespace GUI_Design_Mockup
             RecipientBox.DataSource = EmpListA;
         }
 
+        private void InitializeTypeOfAwardBox(string DefaultAwardType)
+        {
+            var ToAListRaw = from A in DContext.Type_Of_Awards
+                             where A.IsNomination == true || A.AwardTypeName == "On The Spot"
+                             orderby A.AwardTypeName ascending 
+                             select A;
+            AwardTypeList = new List<Type_Of_Award>();
+
+            Type_Of_Award temp = null;
+            foreach (Type_Of_Award T in ToAListRaw)
+            {
+                AwardTypeList.Add(T);
+                if (T.AwardTypeName.Equals(DefaultAwardType , StringComparison.CurrentCultureIgnoreCase))
+                    temp = T;
+            }
+
+            comboBox1.DataSource = AwardTypeList;
+            if(temp!=null)
+            comboBox1.SelectedIndex = AwardTypeList.IndexOf(temp);
+        }
+
         private void RecipientBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Employee SelectedEmployee = (Employee)RecipientBox.Items[RecipientBox.SelectedIndex];
             if (SelectedEmployee != null && !SelectedEmployee.EmployeeID.Equals("EMP-000001"))
             {
-                var tempVar = from D in DeptList
-                              where D.DeptID == SelectedEmployee.DeptID
-                              select D;
-
-                List<string> SList = new List<string>();
-
-
-                foreach (Department D in tempVar)
-                    SList.Add(D.DeptName);
-
-                if (SList.Count > 0)
-                    DepartmentBox.Text = SList[0];
+                Department tempDept = DBCommands.GetDepartment(SelectedEmployee.DeptID);
+                if (tempDept != null)
+                    DepartmentBox.Text = tempDept.DeptName;
                 else
                     DepartmentBox.Text = "";
             }
@@ -111,8 +133,7 @@ namespace GUI_Design_Mockup
         private void button2_Click(object sender, EventArgs e)
         {
             Award NewAward = new Award();
-            int NextNum = frmMainMenu.NextID("Award");
-            NewAward.AwardID = "AWD" + NextNum.ToString("0000000");
+            NewAward.AwardID = DBCommands.NextID("Award");
             Employee EmpA, EmpB;
             EmpA = (Employee)NominatorBox.SelectedItem;
             EmpB = (Employee)RecipientBox.SelectedItem;
@@ -121,9 +142,8 @@ namespace GUI_Design_Mockup
                 NewAward.NominatorID = EmpA.EmployeeID;
                 NewAward.RecipientID = EmpB.EmployeeID;
                 NewAward.Notes = NoteBox.Text;
-                NewAward.AwardDeptID = EmpA.DeptID;
                 NewAward.AwardDate = dateTimePicker1.Value;
-                NewAward.AwardTypeID = DBCommands.GetAwardID("On The Spot");
+                NewAward.AwardTypeID = ((Type_Of_Award)comboBox1.SelectedItem).AwardTypeID ;
                 DContext.Awards.InsertOnSubmit(NewAward);
                 DContext.SubmitChanges();
                 this.Close();
@@ -137,8 +157,7 @@ namespace GUI_Design_Mockup
         private void button3_Click(object sender, EventArgs e)
         {
             Award NewAward = new Award();
-            int NextNum = frmMainMenu.NextID("Award");
-            NewAward.AwardID = "AWD" + NextNum.ToString("0000000");
+            NewAward.AwardID = DBCommands.NextID("Award");
             Employee EmpA, EmpB;
             EmpA = (Employee)NominatorBox.SelectedItem;
             EmpB = (Employee)RecipientBox.SelectedItem;
@@ -147,7 +166,6 @@ namespace GUI_Design_Mockup
                 NewAward.NominatorID = EmpA.EmployeeID;
                 NewAward.RecipientID = EmpB.EmployeeID;
                 NewAward.Notes = NoteBox.Text;
-                NewAward.AwardDeptID = EmpA.DeptID;
                 NewAward.AwardDate = dateTimePicker1.Value;
                 NewAward.AwardTypeID = "TOA0000029";
                 DContext.Awards.InsertOnSubmit(NewAward);
@@ -160,6 +178,11 @@ namespace GUI_Design_Mockup
             {
                 MessageBox.Show("You must select both a nominator and a recipient for the award");
             }
+        }
+
+        private void frmNewAward_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

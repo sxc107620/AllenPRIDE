@@ -42,10 +42,10 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.GroupNoBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.EmpBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -102,6 +102,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Add New Employees";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -140,10 +141,10 @@
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.GroupNoBox);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.EmpBox);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.button3);
@@ -161,6 +162,7 @@
             this.button6.TabIndex = 16;
             this.button6.Text = "Set Employees Inactive";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label11
             // 
@@ -174,7 +176,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(18, 165);
+            this.checkBox1.Location = new System.Drawing.Point(230, 140);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(67, 17);
             this.checkBox1.TabIndex = 14;
@@ -183,30 +185,32 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(225, 136);
+            this.button5.Location = new System.Drawing.Point(303, 136);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(172, 23);
             this.button5.TabIndex = 13;
             this.button5.Text = "Update Selected Group";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(225, 96);
+            this.button4.Location = new System.Drawing.Point(303, 96);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(172, 23);
             this.button4.TabIndex = 12;
             this.button4.Text = "Update Selected Employee";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // comboBox2
+            // GroupNoBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(98, 138);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 11;
-            this.comboBox2.Text = "ALL GROUPS";
+            this.GroupNoBox.FormattingEnabled = true;
+            this.GroupNoBox.Location = new System.Drawing.Point(98, 138);
+            this.GroupNoBox.Name = "GroupNoBox";
+            this.GroupNoBox.Size = new System.Drawing.Size(126, 21);
+            this.GroupNoBox.TabIndex = 11;
+            this.GroupNoBox.Text = "ALL GROUPS";
             // 
             // label10
             // 
@@ -226,13 +230,14 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "- OR -";
             // 
-            // comboBox1
+            // EmpBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(98, 98);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.EmpBox.FormattingEnabled = true;
+            this.EmpBox.Location = new System.Drawing.Point(98, 98);
+            this.EmpBox.Name = "EmpBox";
+            this.EmpBox.Size = new System.Drawing.Size(199, 21);
+            this.EmpBox.TabIndex = 8;
+            this.EmpBox.SelectedValueChanged += new System.EventHandler(this.EmpBox_SelectedValueChanged);
             // 
             // label8
             // 
@@ -261,6 +266,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Update HR Data";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label6
             // 
@@ -272,7 +278,7 @@
             this.label6.Text = "Click button to update Department, Title, or FTE of existing employees with curre" +
     "nt HR data.";
             // 
-            // Employees
+            // frmEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -282,7 +288,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Name = "Employees";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmEmployees";
             this.Text = "Employees";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -309,10 +316,10 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox GroupNoBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox EmpBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button3;

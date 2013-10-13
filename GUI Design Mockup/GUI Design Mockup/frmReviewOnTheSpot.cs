@@ -58,12 +58,15 @@ namespace GUI_Design_Mockup
             if (NomEmp != null)
             {
                 NominatorBox.Text = NomEmp.ToString();
-                NomDept = DBCommands.GetDepartment(NomEmp.DeptID);
+            }
+            if (RecEmp != null)
+            {
+                RecipientBox.Text = RecEmp.ToString();
+
+                NomDept = DBCommands.GetDepartment(RecEmp.DeptID);
                 if (NomDept != null)
                     DepartmentBox.Text = NomDept.ToString();
             }
-            if (RecEmp != null)
-                RecipientBox.Text = RecEmp.ToString();
             dateTimePicker1.Value = (DateTime)SelectedAward.AwardDate;
         }
 

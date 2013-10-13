@@ -162,25 +162,29 @@ namespace GUI_Design_Mockup
             string AwdID = DBCommands.GetAwardID("On The Spot");
             var AwdListRawA = from N in DContext.Awards
                               where N.AwardTypeID == AwdID
+                              orderby N.RecipientID
                               select N;
 
             Group GrpVal =(Group) GroupNoBox.SelectedItem;
             if (GrpVal != null && !GrpVal.GroupID.Equals("GRP0000000", StringComparison.CurrentCultureIgnoreCase))
             {
                 var AwdListRawB = from N in AwdListRawA
-                                  join Emp in DContext.Employees on N.NominatorID equals Emp.EmployeeID
+                                  join Emp in DContext.Employees on N.RecipientID equals Emp.EmployeeID
                                   where Emp.GroupID == GrpVal.GroupID
+                                  orderby N.RecipientID 
                                   select N;
-                AwdListRawA = AwdListRawB;
+                AwdListRawA = (System.Linq.IOrderedQueryable<Award>)AwdListRawB;
             }
 
             Department DptVal = (Department)DepartmentBox.SelectedItem;
             if (DptVal != null && !DptVal.DeptID.Equals("DPT0000000", StringComparison.CurrentCultureIgnoreCase))
             {
                 var AwdListRawB = from N in AwdListRawA
-                                  where N.AwardDeptID == DptVal.DeptID
+                                  join Emp in DContext.Employees on N.RecipientID equals Emp.EmployeeID
+                                  where Emp.DeptID==DptVal.DeptID
+                                  orderby N.RecipientID 
                                   select N;
-                AwdListRawA = AwdListRawB;
+                AwdListRawA = (System.Linq.IOrderedQueryable<Award>)AwdListRawB;
             }
 
             Employee RecEmp = (Employee)RecipientBox.SelectedItem;
@@ -188,8 +192,9 @@ namespace GUI_Design_Mockup
             {
                 var AwdListRawB = from N in AwdListRawA
                                   where N.RecipientID == RecEmp.EmployeeID
+                                  orderby N.RecipientID 
                                   select N;
-                AwdListRawA = AwdListRawB;
+                AwdListRawA = (System.Linq.IOrderedQueryable<Award>)AwdListRawB;
             }
 
             Employee NomEmp = (Employee)NominatorBox.SelectedItem;
@@ -197,24 +202,27 @@ namespace GUI_Design_Mockup
             {
                 var AwdListRawB = from N in AwdListRawA
                                   where N.NominatorID == NomEmp.EmployeeID
+                                  orderby N.RecipientID 
                                   select N;
-                AwdListRawA = AwdListRawB;
+                AwdListRawA = (System.Linq.IOrderedQueryable<Award>)AwdListRawB;
             }
 
             if (checkBox1.Checked)
             {
                 var AwdListRawB = from N in AwdListRawA
-                                  where N.AwardDate>=StartDateBox.Value
+                                  where N.AwardDate >= StartDateBox.Value
+                                  orderby N.RecipientID 
                                   select N;
-                AwdListRawA = AwdListRawB;
+                AwdListRawA = (System.Linq.IOrderedQueryable<Award>)AwdListRawB;
             }
 
             if (checkBox2.Checked)
             {
                 var AwdListRawB = from N in AwdListRawA
                                   where N.AwardDate <= EndDateBox.Value
+                                  orderby N.RecipientID 
                                   select N;
-                AwdListRawA = AwdListRawB;
+                AwdListRawA = (System.Linq.IOrderedQueryable<Award>)AwdListRawB;
             }
 
             foreach (Award A in AwdListRawA)
@@ -222,15 +230,6 @@ namespace GUI_Design_Mockup
 
             form.StartThing(AwdList);
             LaunchForm(form);
-        }
-
-        public static int NextID(string TableName)
-        {
-            var NextId = DBCommands.DContext.GetTable<NextID>().SingleOrDefault(p => p.TableName == TableName);
-            int result = (int)NextId.NextNum;
-            NextId.NextNum++;
-            DBCommands.DContext.SubmitChanges();
-            return result;
         }
 
         private void StartDateBox_ValueChanged(object sender, EventArgs e)
@@ -241,6 +240,26 @@ namespace GUI_Design_Mockup
         private void EndDateBox_ValueChanged(object sender, EventArgs e)
         {
             checkBox2.Checked = true;
+        }
+
+        private void YSPButton_Click(object sender, EventArgs e)
+        {
+            LaunchForm(new frmYouShowedPRIDE());
+        }
+
+        private void DWPButton_Click(object sender, EventArgs e)
+        {
+            LaunchForm(new frmDinnerWithPRIDE());
+        }
+
+        private void DOPButton_Click(object sender, EventArgs e)
+        {
+            LaunchForm(new frmDayOfPRIDE());
+        }
+
+        private void PAAButton_Click(object sender, EventArgs e)
+        {
+            LaunchForm(new frmPRIDEAwards());
         }
     }
 }

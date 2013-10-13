@@ -47,13 +47,12 @@ namespace GUI_Design_Mockup
         private void button2_Click(object sender, EventArgs e)
         {
             LoadAllDeptNames();
-            LoadAllDeptNamesB();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            LoadAllAwards();
+            LoadAllEmployees();
         }  
 
         private List<DataRow> GetAwards(string AwType)
@@ -77,8 +76,7 @@ namespace GUI_Design_Mockup
             for (C1 = 0; C1 < NominationRows.Count; C1++)
             {
                 ToA = new Type_Of_Award();
-                NextNum = frmMainMenu.NextID("Type_Of_Award");
-                ToA.AwardTypeID = "TOA" + NextNum.ToString("0000000");
+                ToA.AwardTypeID = DBCommands.NextID("Type_Of_Award");
                 ToA.AwardTypeName = NominationRows[C1][0].ToString();
                 if (DBCommands.GetAwardID(ToA.AwardTypeName).Equals(""))
                 {
@@ -106,14 +104,13 @@ namespace GUI_Design_Mockup
         private void LoadAwardsIntoTable()
         {
             List<DataRow> NominationRows = GetAwards("Award");
-            int C1, NextNum;
+            int C1;
             Type_Of_Award ToA;
             List<Type_Of_Award> ToAList = new List<Type_Of_Award>();
             for (C1 = 0; C1 < NominationRows.Count; C1++)
             {
                 ToA = new Type_Of_Award();
-                NextNum = frmMainMenu.NextID("Type_Of_Award");
-                ToA.AwardTypeID = "TOA" + NextNum.ToString("0000000");
+                ToA.AwardTypeID = DBCommands.NextID("Type_Of_Award");
                 ToA.AwardTypeName = NominationRows[C1][0].ToString();
                 if (DBCommands.GetAwardID(ToA.AwardTypeName).Equals(""))
                 {
@@ -148,7 +145,6 @@ namespace GUI_Design_Mockup
             List<Department> DeptList = new List<Department>();
 
             Department dept = new Department();
-            int NextNum;
             foreach (string S in StringListRaw)
             {
                 StringList.Add(S);
@@ -156,8 +152,7 @@ namespace GUI_Design_Mockup
                 if (DBCommands.GetDeptID(S) == "")
                 {
                     dept.DeptName = S;
-                    NextNum = frmMainMenu.NextID("Department");
-                    dept.DeptID = "DPT" + NextNum.ToString("0000000");
+                    dept.DeptID = DBCommands.NextID("Department");
                     DeptList.Add(dept);
                 }
             }
@@ -183,7 +178,6 @@ namespace GUI_Design_Mockup
             List<Department> DeptList = new List<Department>();
 
             Department dept = new Department();
-            int NextNum;
             foreach (string S in StringListRaw)
             {
                 StringList.Add(S);
@@ -191,8 +185,7 @@ namespace GUI_Design_Mockup
                 if (DBCommands.GetDeptID(S) == "")
                 {
                     dept.DeptName = S;
-                    NextNum = frmMainMenu.NextID("Department");
-                    dept.DeptID = "DPT" + NextNum.ToString("0000000");
+                    dept.DeptID= DBCommands.NextID("Department");
 
                     DeptList.Add(dept);
                 }
@@ -282,7 +275,6 @@ namespace GUI_Design_Mockup
                     NextNum = (int)DR[8];
                     TempAwd.NominatorID = "EMP" + NextNum.ToString("0000000");
                     TempAwd.Notes = DR[13].ToString();
-                    TempAwd.AwardDeptID = DBCommands.GetDeptID(DR[15].ToString());
                     AwardList.Add(TempAwd);
                 }
             }
