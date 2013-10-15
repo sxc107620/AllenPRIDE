@@ -18,7 +18,6 @@ namespace GUI_Design_Mockup
         List<Employee> EmpListA;
         List<Type_Of_Award> ToAList;
         DataConnectionClass DContext;
-        
 
         public frmMainMenu()
         {
@@ -39,6 +38,7 @@ namespace GUI_Design_Mockup
         {
             frm.FormClosed += OnSubFormClose;
             frm.Show();
+            frm.Location = this.Location;
             this.Hide();
         }
 

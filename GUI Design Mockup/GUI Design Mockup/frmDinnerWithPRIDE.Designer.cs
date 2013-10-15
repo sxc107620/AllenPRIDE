@@ -33,14 +33,14 @@
             this.GroupNoBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.QuarterBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.YearBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -101,6 +101,33 @@
             this.panel1.Size = new System.Drawing.Size(327, 61);
             this.panel1.TabIndex = 11;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(217, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(101, 50);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Dinner with PRIDE Award Winners";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(110, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 50);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Email Dinner with PRIDE Eligibility Report";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 50);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Dinner with PRIDE Eligibility Report";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // QuarterBox
             // 
             this.QuarterBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -156,33 +183,6 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Reports:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 50);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Dinner with PRIDE Eligibility Report";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(110, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 50);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Email Dinner with PRIDE Eligibility Report";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(217, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 50);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Dinner with PRIDE Award Winners";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -201,6 +201,7 @@
             this.button4.TabIndex = 18;
             this.button4.Text = "Show Nominees";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 

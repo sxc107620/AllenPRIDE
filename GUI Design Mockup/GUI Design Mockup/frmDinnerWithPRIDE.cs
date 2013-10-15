@@ -13,9 +13,11 @@ namespace GUI_Design_Mockup
     public partial class frmDinnerWithPRIDE : Form
     {
         List<Group> GroupList;
+        DataConnectionClass DContext;
         public frmDinnerWithPRIDE()
         {
             InitializeComponent();
+            DContext = DBCommands.DContext;
         }
 
         private void frmDinnerWithPRIDE_Load(object sender, EventArgs e)
@@ -62,6 +64,33 @@ namespace GUI_Design_Mockup
 
             GroupNoBox.DataSource = GroupList;
             GroupNoBox.SelectedIndex = 0;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int QuarterValue = QuarterBox.SelectedIndex;
+            int YearValue = int.Parse(YearBox.SelectedItem.ToString());
+
+            DateTime FirstDay = new DateTime(YearValue, 3 * QuarterValue + 1, 1);
+            DateTime LastDay = new DateTime(YearValue, 3 + 3 * QuarterValue, DateTime.DaysInMonth(YearValue, 3 + 3 * QuarterValue));
+
+            Group Grp = (Group)GroupNoBox.SelectedItem;
+            if (Grp != null)
+            {
+                var AwardListRaw = (from A in DContext.Awards
+                                    join Emp in DContext.Employees on A.RecipientID equals Emp.EmployeeID
+                                    join D in DContext.Departments on Emp.DeptID equals D.DeptID
+                                    join G in DContext.Groups on Emp.GroupID equals G.GroupID
+                                    where A.AwardDate >= FirstDay && A.AwardDate <= LastDay && Emp.GroupID == Grp.GroupID
+                                    select new { Emp.PreferredName, Emp.LastName, D.DeptName, G.GroupNum }).Distinct();
+
+                dataGridView1.DataSource = AwardListRaw;
+                dataGridView1.Columns[0].HeaderText = "Preferred Name";
+                dataGridView1.Columns[1].HeaderText = "Last Name";
+                dataGridView1.Columns[2].HeaderText = "Department Name";
+                dataGridView1.Columns[3].HeaderText = "Group Number";
+
+            }
         }
     }
 }

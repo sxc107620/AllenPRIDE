@@ -44,7 +44,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.HalfBox = new System.Windows.Forms.ComboBox();
+            this.AwardBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.YearBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -152,9 +152,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 272);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 272);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(582, 222);
+            this.dataGridView1.Size = new System.Drawing.Size(606, 233);
             this.dataGridView1.TabIndex = 54;
             // 
             // button6
@@ -183,6 +184,7 @@
             this.button4.TabIndex = 51;
             this.button4.Text = "Show Nominees";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label7
             // 
@@ -204,17 +206,17 @@
             this.label6.TabIndex = 49;
             this.label6.Text = "Reports:";
             // 
-            // HalfBox
+            // AwardBox
             // 
-            this.HalfBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HalfBox.FormattingEnabled = true;
-            this.HalfBox.Items.AddRange(new object[] {
+            this.AwardBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AwardBox.FormattingEnabled = true;
+            this.AwardBox.Items.AddRange(new object[] {
             "1st",
             "2nd"});
-            this.HalfBox.Location = new System.Drawing.Point(233, 79);
-            this.HalfBox.Name = "HalfBox";
-            this.HalfBox.Size = new System.Drawing.Size(121, 21);
-            this.HalfBox.TabIndex = 48;
+            this.AwardBox.Location = new System.Drawing.Point(233, 79);
+            this.AwardBox.Name = "AwardBox";
+            this.AwardBox.Size = new System.Drawing.Size(121, 21);
+            this.AwardBox.TabIndex = 48;
             // 
             // label5
             // 
@@ -261,12 +263,13 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.HalfBox);
+            this.Controls.Add(this.AwardBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.YearBox);
             this.Controls.Add(this.panel1);
             this.Name = "frmPRIDEAwards";
             this.Text = "PRIDE Annual Awards";
+            this.Load += new System.EventHandler(this.frmPRIDEAwards_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -293,7 +296,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox HalfBox;
+        private System.Windows.Forms.ComboBox AwardBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox YearBox;
         private System.Windows.Forms.Panel panel1;

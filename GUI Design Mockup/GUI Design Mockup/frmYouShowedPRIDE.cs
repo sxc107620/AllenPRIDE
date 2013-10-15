@@ -13,9 +13,12 @@ namespace GUI_Design_Mockup
     public partial class frmYouShowedPRIDE : Form
     {
         List<Group> GroupList;
+        List<Award> AwardList;
+        DataConnectionClass DContext;
         public frmYouShowedPRIDE()
         {
             InitializeComponent();
+            DContext = DBCommands.DContext;
         }
 
         private void frmYouShowedPRIDE_Load(object sender, EventArgs e)
@@ -34,9 +37,9 @@ namespace GUI_Design_Mockup
             string GroupNum = "";
             if (grp != null)
                 GroupNum = grp.GroupNum;
-            string Month="";
-            if (MonthBox.SelectedItem != null) 
-            Month = MonthBox.SelectedItem.ToString();
+            string Month = "";
+            if (MonthBox.SelectedItem != null)
+                Month = MonthBox.SelectedItem.ToString();
 
             label7.Text = "Select " + Month + " winner(s) for Group " + GroupNum + ", then click the Winner button.";
         }
@@ -64,6 +67,33 @@ namespace GUI_Design_Mockup
             }
 
             GroupNoBox.DataSource = GroupList;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int MonthValue = MonthBox.SelectedIndex + 1;
+            int YearValue = int.Parse(YearBox.SelectedItem.ToString());
+
+            DateTime FirstDay = new DateTime(YearValue, MonthValue, 1);
+            DateTime LastDay = new DateTime(YearValue, MonthValue, DateTime.DaysInMonth(YearValue, MonthValue));
+
+            Group Grp = (Group)GroupNoBox.SelectedItem;
+            if (Grp != null)
+            {
+                var AwardListRaw = (from A in DContext.Awards
+                                    join Emp in DContext.Employees on A.RecipientID equals Emp.EmployeeID
+                                    join D in DContext.Departments on Emp.DeptID equals D.DeptID
+                                    join G in DContext.Groups on Emp.GroupID equals G.GroupID
+                                    where A.AwardDate >= FirstDay && A.AwardDate <= LastDay && Emp.GroupID == Grp.GroupID
+                                    select new { Emp.PreferredName, Emp.LastName, D.DeptName, G.GroupNum }).Distinct();
+
+                dataGridView1.DataSource = AwardListRaw;
+                dataGridView1.Columns[0].HeaderText = "Preferred Name";
+                dataGridView1.Columns[1].HeaderText = "Last Name";
+                dataGridView1.Columns[2].HeaderText = "Department Name";
+                dataGridView1.Columns[3].HeaderText = "Group Number";
+
+            }
         }
     }
 }
