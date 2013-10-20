@@ -1,0 +1,7 @@
+Award,17278,AWD
+Department,151,DPT
+Employee,5831,EMP
+Group,16,GRP
+Pride_Expenditure,1,PRE
+Prize,1,PRZ
+Type_Of_Award,34,TOA

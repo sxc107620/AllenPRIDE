@@ -40,20 +40,150 @@ namespace GUI_Design_Mockup
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoadAllEmployees();
-            LoadAllAwards();
+            ImportIDs();
+            ImportGroups();
+            ImportAwardTypes();
+            //LoadAllEmployees();
+            //LoadAllAwards();
+            MessageBox.Show("Done doing whatever this button does today!");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            LoadAllEmployees();
             LoadAllDeptNames();
-
+            LoadAllAwards();
+            //LoadAllDeptNames();
+            MessageBox.Show("Done doing whatever this button does today!");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            LoadAllEmployees();
-        }  
+            //LoadAllEmployees();
+            MessageBox.Show("Done doing whatever this button does today!");
+        }
+
+        private void ImportIDs()
+        {
+            string Temp;
+            NextID ID;
+            List<NextID> NIds = new List<NextID>();
+            string[] Pieces;
+            System.IO.StreamReader SRead = new System.IO.StreamReader("IDTypes.txt");
+            while (!SRead.EndOfStream)
+            {
+                Temp = SRead.ReadLine();
+                ID = new NextID();
+                Pieces = Temp.Split(',');
+                if (Pieces.Length == 3)
+                {
+                    ID.TableName = Pieces[0];
+                    ID.NextNum = int.Parse(Pieces[1]);
+                    ID.Prefix = Pieces[2];
+                    NIds.Add(ID);
+                }
+            }
+            foreach (NextID NID in NIds)
+            {
+                DContext.NextIDs.InsertOnSubmit(NID);
+            }
+            DContext.SubmitChanges();
+        }
+
+        private void ImportGroups()
+        {
+            string Temp;
+            Group G;
+            List<Group> Groups = new List<Group>();
+            string[] Pieces;
+            System.IO.StreamReader SRead = new System.IO.StreamReader("Groups.txt");
+            while (!SRead.EndOfStream)
+            {
+                Temp = SRead.ReadLine();
+                G = new Group();
+                Pieces = Temp.Split(',');
+                if (Pieces.Length == 3)
+                {
+                   G.GroupID= Pieces[0];
+                    G.GroupNum  = Pieces[1];
+                    G.DayOfPride = Pieces[2][0];
+                    Groups.Add(G);
+                }
+            }
+            foreach (Group Gr in Groups)
+            {
+                DContext.Groups.InsertOnSubmit(Gr);
+            }
+            DContext.SubmitChanges();
+        }
+
+        private void ImportAwardTypes()
+        {
+            string Temp;
+            Type_Of_Award TOA;
+            List<Type_Of_Award > TOAs= new List<Type_Of_Award>();
+            string[] Pieces;
+            System.IO.StreamReader SRead = new System.IO.StreamReader("AwardTypes.txt");
+            while (!SRead.EndOfStream)
+            {
+                Temp = SRead.ReadLine();
+                TOA = new Type_Of_Award();
+                Pieces = Temp.Split(',');
+                if (Pieces.Length == 5)
+                {
+                    TOA.AwardTypeID = Pieces[0];
+                    TOA.AwardTypeName= Pieces[1];
+                    TOA.IsNomination = bool.Parse(Pieces[2]);
+                    TOA.Frequency = Pieces[3];
+                    TOA.AwardNominationID = Pieces[4];
+                    TOAs.Add(TOA);
+                }
+            }
+            foreach (Type_Of_Award A in TOAs)
+            {
+                DContext.Type_Of_Awards.InsertOnSubmit(A);
+            }
+            DContext.SubmitChanges();
+        }
+
+        private void ExtractAllNextIDs()
+        {
+            var IDs = from ID in DContext.NextIDs
+                      select ID;
+            System.IO.StreamWriter SWrite = new System.IO.StreamWriter("IDTypes.txt");
+            foreach (NextID ID in IDs)
+            {
+                SWrite.WriteLine(ID.TableName+","+ID.NextNum.ToString()+","+ID.Prefix );
+            }
+            SWrite.Close();
+        }
+
+        private void ExtractAllAwardTypes()
+        {
+            //NOTE: Do not use, built for pulling data to give to Scott
+            var Stuff = from TOA in DContext.Type_Of_Awards
+                        select TOA;
+
+            System.IO.StreamWriter SWrite = new System.IO.StreamWriter("AwardTypes.txt");
+            foreach (Type_Of_Award TOA in Stuff)
+            {
+                SWrite.WriteLine(TOA.AwardTypeID + "," + TOA.AwardTypeName + "," + TOA.IsNomination.ToString() + "," + TOA.Frequency.ToArray() + "," + TOA.AwardNominationID);
+            }
+            SWrite.Close();
+        }
+        private void ExtractAllGroups()
+        {
+            //NOTE: Do not use, built for pulling data to give to Scott
+            var Stuff = from TOA in DContext.Groups
+                        select TOA;
+
+            System.IO.StreamWriter SWrite = new System.IO.StreamWriter("Groups.txt");
+            foreach (Group G in Stuff)
+            {
+                SWrite.WriteLine(G.GroupID+","+G.GroupNum+","+G.DayOfPride.ToString());
+            }
+            SWrite.Close();
+        }
 
         private List<DataRow> GetAwards(string AwType)
         {
@@ -67,7 +197,7 @@ namespace GUI_Design_Mockup
             return NominationRows;
         }
 
-        private void LoadNominationsIntoTable()
+        private void LoadAllNominationTypes()
         {
             List<DataRow> NominationRows = GetAwards("Nomination");
             int C1, NextNum;
@@ -101,7 +231,7 @@ namespace GUI_Design_Mockup
             }
         }
 
-        private void LoadAwardsIntoTable()
+        private void LoadAllAwardTypes()
         {
             List<DataRow> NominationRows = GetAwards("Award");
             int C1;

@@ -70,7 +70,6 @@ namespace GUI_Design_Mockup
                 dataGridView1.Columns[1].HeaderText = "Last Name";
                 dataGridView1.Columns[2].HeaderText = "Department Name";
                 dataGridView1.Columns[3].HeaderText = "Group Number";
-
             }
         }
     }

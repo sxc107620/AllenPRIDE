@@ -1,0 +1,19 @@
+TOA0000001,D Nomination,True,System.Char[],
+TOA0000002,Day Of PRIDE Nomination,True,System.Char[],
+TOA0000003,E Nomination,True,System.Char[],
+TOA0000004,Heart Of Gold Nomination,True,System.Char[],
+TOA0000005,I Nomination,True,System.Char[],
+TOA0000006,P Nomination,True,System.Char[],
+TOA0000007,R Nomination,True,System.Char[],
+TOA0000008,Unsung Hero Nomination,True,System.Char[],
+TOA0000023,D,False,System.Char[],TOA0000001
+TOA0000024,Day Of PRIDE,False,System.Char[],TOA0000002
+TOA0000025,Dinner with PRIDE,False,System.Char[],TOA0000029
+TOA0000026,E,False,System.Char[],TOA0000003
+TOA0000027,Heart Of Gold,False,System.Char[],TOA0000004
+TOA0000028,I,False,System.Char[],TOA0000005
+TOA0000029,On The Spot,False,System.Char[],          
+TOA0000030,P,False,System.Char[],TOA0000006
+TOA0000031,R,False,System.Char[],TOA0000007
+TOA0000032,Unsung Hero,False,System.Char[],TOA0000008
+TOA0000033,You Showed PRIDE,False,System.Char[],TOA0000029
