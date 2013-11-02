@@ -261,5 +261,10 @@ namespace GUI_Design_Mockup
         {
             LaunchForm(new frmPRIDEAwards());
         }
+
+        private void MonthStatRptButton_Click(object sender, EventArgs e)
+        {
+            LaunchForm(new frmMonthlyStats());
+        }
     }
 }

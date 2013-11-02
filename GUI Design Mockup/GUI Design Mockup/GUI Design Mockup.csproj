@@ -32,9 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classStatsReport.cs" />
     <Compile Include="DataClasses1.cs">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
@@ -54,6 +58,12 @@
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="DBCommands.cs" />
+    <Compile Include="frmMonthlyStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMonthlyStats.Designer.cs">
+      <DependentUpon>frmMonthlyStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDayOfPRIDE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +131,8 @@
     <Compile Include="frmUpdateEmployees.Designer.cs">
       <DependentUpon>frmUpdateEmployees.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MonthlyStatsReport.rdlc" />
+    <EmbeddedResource Include="GroupSubreport.rdlc" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -135,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMonthlyStats.resx">
+      <DependentUpon>frmMonthlyStats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewAward.resx">
       <DependentUpon>frmNewAward.cs</DependentUpon>
@@ -179,6 +194,7 @@
     <None Include="PRIDE_beDataSet.xss">
       <DependentUpon>PRIDE_beDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\classStatsReport.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -184,5 +184,10 @@ namespace GUI_Design_Mockup
         {
 
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

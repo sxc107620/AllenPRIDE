@@ -46,8 +46,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.AwardBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.YearBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.EndDateBox = new System.Windows.Forms.DateTimePicker();
+            this.StartDateBox = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -70,6 +72,7 @@
             this.button10.TabIndex = 0;
             this.button10.Text = "Review Annual Award Nominations";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label8
             // 
@@ -100,6 +103,7 @@
             this.button9.TabIndex = 1;
             this.button9.Text = "New P.R.I.D.E. Nomination";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label2
             // 
@@ -129,15 +133,16 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "P.R.I.D.E. Award Winners";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(149, 55);
+            this.label3.Location = new System.Drawing.Point(158, 85);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 45;
-            this.label3.Text = "Select Year:";
+            this.label3.Text = "Start Date:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button1
@@ -175,6 +180,7 @@
             this.button5.TabIndex = 52;
             this.button5.Text = "Close";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -190,7 +196,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 249);
+            this.label7.Location = new System.Drawing.Point(10, 235);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(451, 13);
             this.label7.TabIndex = 50;
@@ -213,7 +219,7 @@
             this.AwardBox.Items.AddRange(new object[] {
             "1st",
             "2nd"});
-            this.AwardBox.Location = new System.Drawing.Point(233, 79);
+            this.AwardBox.Location = new System.Drawing.Point(233, 52);
             this.AwardBox.Name = "AwardBox";
             this.AwardBox.Size = new System.Drawing.Size(121, 21);
             this.AwardBox.TabIndex = 48;
@@ -221,21 +227,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 82);
+            this.label5.Location = new System.Drawing.Point(149, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 13);
             this.label5.TabIndex = 47;
             this.label5.Text = "Award Type:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // YearBox
-            // 
-            this.YearBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.YearBox.FormattingEnabled = true;
-            this.YearBox.Location = new System.Drawing.Point(233, 52);
-            this.YearBox.Name = "YearBox";
-            this.YearBox.Size = new System.Drawing.Size(121, 21);
-            this.YearBox.TabIndex = 46;
             // 
             // panel1
             // 
@@ -247,11 +244,42 @@
             this.panel1.Size = new System.Drawing.Size(218, 61);
             this.panel1.TabIndex = 44;
             // 
+            // EndDateBox
+            // 
+            this.EndDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateBox.Location = new System.Drawing.Point(233, 106);
+            this.EndDateBox.Name = "EndDateBox";
+            this.EndDateBox.Size = new System.Drawing.Size(121, 20);
+            this.EndDateBox.TabIndex = 59;
+            this.EndDateBox.ValueChanged += new System.EventHandler(this.EndDateBox_ValueChanged);
+            // 
+            // StartDateBox
+            // 
+            this.StartDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDateBox.Location = new System.Drawing.Point(233, 79);
+            this.StartDateBox.Name = "StartDateBox";
+            this.StartDateBox.Size = new System.Drawing.Size(121, 20);
+            this.StartDateBox.TabIndex = 58;
+            this.StartDateBox.ValueChanged += new System.EventHandler(this.StartDateBox_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(161, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "End Date:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmPRIDEAwards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 505);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.EndDateBox);
+            this.Controls.Add(this.StartDateBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
@@ -265,7 +293,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.AwardBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.YearBox);
             this.Controls.Add(this.panel1);
             this.Name = "frmPRIDEAwards";
             this.Text = "PRIDE Annual Awards";
@@ -298,7 +325,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox AwardBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox YearBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker EndDateBox;
+        private System.Windows.Forms.DateTimePicker StartDateBox;
+        private System.Windows.Forms.Label label4;
     }
 }

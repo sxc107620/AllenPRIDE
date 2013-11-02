@@ -13,9 +13,9 @@ namespace GUI_Design_Mockup
     public partial class frmReviewOnTheSpot : Form
     {
         List<Award> AwdList;
-        List<Department> DeptList;
+        /*List<Department> DeptList;
         List<Employee> EmpList;
-        List<Employee> EmpListA;
+        List<Employee> EmpListA;*/
         DataConnectionClass DContext;
 
         Award SelectedAward;

@@ -36,16 +36,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.QuarterBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.YearBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.EndDateBox = new System.Windows.Forms.DateTimePicker();
+            this.StartDateBox = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +109,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Dinner with PRIDE Award Winners";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -128,51 +129,6 @@
             this.button1.Text = "Dinner with PRIDE Eligibility Report";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // QuarterBox
-            // 
-            this.QuarterBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.QuarterBox.FormattingEnabled = true;
-            this.QuarterBox.Items.AddRange(new object[] {
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"});
-            this.QuarterBox.Location = new System.Drawing.Point(228, 77);
-            this.QuarterBox.Name = "QuarterBox";
-            this.QuarterBox.Size = new System.Drawing.Size(121, 21);
-            this.QuarterBox.TabIndex = 13;
-            this.QuarterBox.SelectedValueChanged += new System.EventHandler(this.YearBox_SelectedValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(144, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Select Quarter:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // YearBox
-            // 
-            this.YearBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.YearBox.FormattingEnabled = true;
-            this.YearBox.Location = new System.Drawing.Point(228, 104);
-            this.YearBox.Name = "YearBox";
-            this.YearBox.Size = new System.Drawing.Size(121, 21);
-            this.YearBox.TabIndex = 15;
-            this.YearBox.SelectedValueChanged += new System.EventHandler(this.YearBox_SelectedValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(144, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Select Year:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -187,7 +143,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 236);
+            this.label7.Location = new System.Drawing.Point(12, 225);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(386, 13);
             this.label7.TabIndex = 17;
@@ -230,21 +186,59 @@
             this.dataGridView1.Size = new System.Drawing.Size(579, 213);
             this.dataGridView1.TabIndex = 21;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(156, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 68;
+            this.label3.Text = "End Date:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // EndDateBox
+            // 
+            this.EndDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateBox.Location = new System.Drawing.Point(228, 104);
+            this.EndDateBox.Name = "EndDateBox";
+            this.EndDateBox.Size = new System.Drawing.Size(121, 20);
+            this.EndDateBox.TabIndex = 67;
+            this.EndDateBox.ValueChanged += new System.EventHandler(this.EndDateBox_ValueChanged);
+            // 
+            // StartDateBox
+            // 
+            this.StartDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDateBox.Location = new System.Drawing.Point(228, 77);
+            this.StartDateBox.Name = "StartDateBox";
+            this.StartDateBox.Size = new System.Drawing.Size(121, 20);
+            this.StartDateBox.TabIndex = 66;
+            this.StartDateBox.ValueChanged += new System.EventHandler(this.StartDateBox_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(153, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 65;
+            this.label5.Text = "Start Date:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmDinnerWithPRIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 484);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.EndDateBox);
+            this.Controls.Add(this.StartDateBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.YearBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.QuarterBox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GroupNoBox);
             this.Controls.Add(this.label4);
@@ -268,10 +262,6 @@
         private System.Windows.Forms.ComboBox GroupNoBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox QuarterBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox YearBox;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -281,5 +271,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker EndDateBox;
+        private System.Windows.Forms.DateTimePicker StartDateBox;
+        private System.Windows.Forms.Label label5;
     }
 }

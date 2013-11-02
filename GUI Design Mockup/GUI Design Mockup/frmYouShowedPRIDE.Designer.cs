@@ -34,10 +34,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.YearBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.MonthBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -46,6 +42,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.EndDateBox = new System.Windows.Forms.DateTimePicker();
+            this.StartDateBox = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,9 +53,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 259);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 259);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(579, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(606, 225);
             this.dataGridView1.TabIndex = 36;
             // 
             // button6
@@ -91,7 +92,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 236);
+            this.label7.Location = new System.Drawing.Point(12, 225);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(344, 13);
             this.label7.TabIndex = 32;
@@ -107,58 +108,6 @@
             this.label6.Size = new System.Drawing.Size(55, 13);
             this.label6.TabIndex = 31;
             this.label6.Text = "Reports:";
-            // 
-            // YearBox
-            // 
-            this.YearBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.YearBox.FormattingEnabled = true;
-            this.YearBox.Location = new System.Drawing.Point(223, 104);
-            this.YearBox.Name = "YearBox";
-            this.YearBox.Size = new System.Drawing.Size(121, 21);
-            this.YearBox.TabIndex = 30;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(139, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Select Year:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // MonthBox
-            // 
-            this.MonthBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MonthBox.FormattingEnabled = true;
-            this.MonthBox.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.MonthBox.Location = new System.Drawing.Point(223, 77);
-            this.MonthBox.Name = "MonthBox";
-            this.MonthBox.Size = new System.Drawing.Size(121, 21);
-            this.MonthBox.TabIndex = 28;
-            this.MonthBox.SelectedIndexChanged += new System.EventHandler(this.GroupBox_SelectedValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(139, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Select Month:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
@@ -179,6 +128,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "You Showed PRIDE Award Winners";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -238,21 +188,59 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "You Showed PRIDE Nominations and Awards";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(140, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 64;
+            this.label3.Text = "End Date:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // EndDateBox
+            // 
+            this.EndDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateBox.Location = new System.Drawing.Point(223, 104);
+            this.EndDateBox.Name = "EndDateBox";
+            this.EndDateBox.Size = new System.Drawing.Size(121, 20);
+            this.EndDateBox.TabIndex = 63;
+            this.EndDateBox.ValueChanged += new System.EventHandler(this.EndDateBox_ValueChanged);
+            // 
+            // StartDateBox
+            // 
+            this.StartDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDateBox.Location = new System.Drawing.Point(223, 77);
+            this.StartDateBox.Name = "StartDateBox";
+            this.StartDateBox.Size = new System.Drawing.Size(121, 20);
+            this.StartDateBox.TabIndex = 62;
+            this.StartDateBox.ValueChanged += new System.EventHandler(this.StartDateBox_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(137, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 61;
+            this.label5.Text = "Start Date:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmYouShowedPRIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 484);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.EndDateBox);
+            this.Controls.Add(this.StartDateBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.YearBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.MonthBox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GroupNoBox);
             this.Controls.Add(this.label4);
@@ -277,10 +265,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox YearBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox MonthBox;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -289,5 +273,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker EndDateBox;
+        private System.Windows.Forms.DateTimePicker StartDateBox;
+        private System.Windows.Forms.Label label5;
     }
 }

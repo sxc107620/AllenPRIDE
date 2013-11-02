@@ -34,10 +34,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.HalfBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.YearBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -51,6 +47,10 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.EndDateBox = new System.Windows.Forms.DateTimePicker();
+            this.StartDateBox = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -114,49 +114,6 @@
             this.label6.TabIndex = 31;
             this.label6.Text = "Reports:";
             // 
-            // HalfBox
-            // 
-            this.HalfBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HalfBox.FormattingEnabled = true;
-            this.HalfBox.Items.AddRange(new object[] {
-            "1st",
-            "2nd"});
-            this.HalfBox.Location = new System.Drawing.Point(228, 102);
-            this.HalfBox.Name = "HalfBox";
-            this.HalfBox.Size = new System.Drawing.Size(121, 21);
-            this.HalfBox.TabIndex = 30;
-            this.HalfBox.SelectedValueChanged += new System.EventHandler(this.GroupNoBox_SelectedValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(144, 105);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Select Half:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // YearBox
-            // 
-            this.YearBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.YearBox.FormattingEnabled = true;
-            this.YearBox.Location = new System.Drawing.Point(228, 75);
-            this.YearBox.Name = "YearBox";
-            this.YearBox.Size = new System.Drawing.Size(121, 21);
-            this.YearBox.TabIndex = 28;
-            this.YearBox.SelectedValueChanged += new System.EventHandler(this.GroupNoBox_SelectedValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(144, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Select Year:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -175,6 +132,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Day Of PRIDE Award Winners";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -283,11 +241,53 @@
             this.button10.Text = "Review Day of PRIDE Nominations";
             this.button10.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(156, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 68;
+            this.label3.Text = "End Date:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // EndDateBox
+            // 
+            this.EndDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateBox.Location = new System.Drawing.Point(228, 102);
+            this.EndDateBox.Name = "EndDateBox";
+            this.EndDateBox.Size = new System.Drawing.Size(121, 20);
+            this.EndDateBox.TabIndex = 67;
+            this.EndDateBox.ValueChanged += new System.EventHandler(this.EndDateBox_ValueChanged);
+            // 
+            // StartDateBox
+            // 
+            this.StartDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDateBox.Location = new System.Drawing.Point(228, 75);
+            this.StartDateBox.Name = "StartDateBox";
+            this.StartDateBox.Size = new System.Drawing.Size(121, 20);
+            this.StartDateBox.TabIndex = 66;
+            this.StartDateBox.ValueChanged += new System.EventHandler(this.StartDateBox_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(153, 81);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 65;
+            this.label5.Text = "Start Date:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmDayOfPRIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 505);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.EndDateBox);
+            this.Controls.Add(this.StartDateBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button7);
@@ -297,10 +297,6 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.HalfBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.YearBox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GroupNoBox);
             this.Controls.Add(this.label4);
@@ -326,10 +322,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox HalfBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox YearBox;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -343,5 +335,9 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker EndDateBox;
+        private System.Windows.Forms.DateTimePicker StartDateBox;
+        private System.Windows.Forms.Label label5;
     }
 }

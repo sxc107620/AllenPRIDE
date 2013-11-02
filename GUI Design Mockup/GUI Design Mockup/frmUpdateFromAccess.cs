@@ -50,8 +50,8 @@ namespace GUI_Design_Mockup
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoadAllEmployees();
             LoadAllDeptNames();
+            LoadAllEmployees();
             LoadAllAwards();
             //LoadAllDeptNames();
             MessageBox.Show("Done doing whatever this button does today!");
@@ -200,7 +200,7 @@ namespace GUI_Design_Mockup
         private void LoadAllNominationTypes()
         {
             List<DataRow> NominationRows = GetAwards("Nomination");
-            int C1, NextNum;
+            int C1;//, NextNum;
             Type_Of_Award ToA;
             List<Type_Of_Award> ToAList = new List<Type_Of_Award>();
             for (C1 = 0; C1 < NominationRows.Count; C1++)
@@ -246,7 +246,7 @@ namespace GUI_Design_Mockup
                 {
                     ToA.IsNomination = false;
                     ToA.Frequency = NominationRows[C1][3].ToString();
-                    ToA.AwardNominationID = DBCommands.GetAwardNominationID(NominationRows[C1][4].ToString());
+                    ToA.AwardNominationID = DBCommands.GetAwardID(NominationRows[C1][4].ToString());
                     ToAList.Add(ToA);
                 }
             }

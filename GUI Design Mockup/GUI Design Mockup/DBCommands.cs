@@ -30,14 +30,14 @@ namespace GUI_Design_Mockup
             return result;
         }
 
-        public static string GetAwardNominationID(string AwardName)
+        /*public static string GetAwardNominationID(string AwardName)
         {
             string result = "";
             var AwdNomination = DContext.GetTable<Type_Of_Award>().SingleOrDefault(p => p.AwardTypeName == AwardName);
             if (AwdNomination != null)
                 result = AwdNomination.AwardTypeID;
             return result;
-        }
+        }*/
 
         public static string GetDeptID(string DeptName)
         {
@@ -79,6 +79,24 @@ namespace GUI_Design_Mockup
             if (AwdVar != null)
                 result = AwdVar.AwardTypeID;
             return result;
+        }
+
+        public static Type_Of_Award GetTypeOfAward(string AwardID)
+        {
+            var AwdVar = DContext.GetTable<Type_Of_Award>().SingleOrDefault(p => p.AwardTypeID == AwardID);
+            if (AwdVar != null)
+                return AwdVar;
+            else 
+                return null;
+        }
+
+        public static Type_Of_Award GetAwardFromNomination(string NominationID)
+        {
+            var AwdVar = DContext.GetTable<Type_Of_Award>().SingleOrDefault(p => p.AwardNominationID == NominationID);
+            if (AwdVar != null)
+                return AwdVar;
+            else
+                return null;
         }
 
         public static bool GetAwardExists(string AwardID)

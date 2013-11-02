@@ -113,9 +113,9 @@
             // textBox3
             // 
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(346, 136);
+            this.textBox3.Location = new System.Drawing.Point(253, 136);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(74, 20);
+            this.textBox3.Size = new System.Drawing.Size(167, 20);
             this.textBox3.TabIndex = 26;
             this.textBox3.Text = "On The Spot";
             // 

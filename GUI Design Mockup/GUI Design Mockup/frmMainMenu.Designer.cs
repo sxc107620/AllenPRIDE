@@ -265,6 +265,7 @@
             this.MonthStatRptButton.TabIndex = 21;
             this.MonthStatRptButton.Text = "Monthly Statistics Report";
             this.MonthStatRptButton.UseVisualStyleBackColor = true;
+            this.MonthStatRptButton.Click += new System.EventHandler(this.MonthStatRptButton_Click);
             // 
             // DeptGrpRptButton
             // 
