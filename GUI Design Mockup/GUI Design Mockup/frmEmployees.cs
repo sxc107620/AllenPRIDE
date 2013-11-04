@@ -14,7 +14,7 @@ namespace GUI_Design_Mockup
     {
         List<Group> GroupList;
         List<Employee> EmpList;
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
 
         public frmEmployees()
         {
@@ -164,11 +164,11 @@ namespace GUI_Design_Mockup
             {
                 if (E.MiddleInitial != null)
                     if (TempEmpList.Count(p => p.FirstName == E.FirstName && p.LastName == E.LastName && p.MiddleInitial == E.MiddleInitial) == 0)
-                        if ((bool)E.Active)
+                        if (E.Active !=null && (bool)E.Active)
                             InactiveEmployeeList.Add(E);
                 else
                     if (TempEmpList.Count(p => p.FirstName == E.FirstName && p.LastName == E.LastName) == 0)
-                        if ((bool)E.Active)
+                        if (E.Active != null && (bool)E.Active)
                             InactiveEmployeeList.Add(E);
             }
 
@@ -178,7 +178,7 @@ namespace GUI_Design_Mockup
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            LaunchForm(new frmUpdateFromExcel());
         }
     }
 }

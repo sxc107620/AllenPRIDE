@@ -10,12 +10,33 @@ namespace GUI_Design_Mockup
 {
     class DBCommands
     {
-        public static DataConnectionClass DContext;
+        public static DataClasses1DataContext DContext;
 
         public static Employee GetEmployee(string EmpID)
         {
             Employee  result = null;
             var TempEmp = DContext.GetTable<Employee>().SingleOrDefault(p => p.EmployeeID == EmpID);
+            if (TempEmp != null)
+                result = TempEmp;
+            return result;
+        }
+
+        public static Employee GetEmployee(string First, char? Middle, string Last)
+        {
+            Employee result = null;
+            Employee TempEmp;
+            if (Middle != null)
+            {
+                TempEmp = (from Emp in DContext.Employees
+                           where Emp.FirstName == First && Emp.MiddleInitial == Middle && Emp.LastName == Last
+                           select Emp).First<Employee>();
+            }
+            else
+            {
+                TempEmp = (from Emp in DContext.Employees
+                           where Emp.FirstName == First && Emp.LastName == Last
+                           select Emp).First<Employee>();
+            }
             if (TempEmp != null)
                 result = TempEmp;
             return result;
@@ -163,6 +184,20 @@ namespace GUI_Design_Mockup
             }
         }
 
+        public static void SaveEmployeeB(Employee Emp)
+        {
+            var EmpVal = DContext.GetTable<Employee>().SingleOrDefault(p => p.EmployeeID == Emp.EmployeeID);
+            if (EmpVal != null)
+            {
+                EmpVal.DeptID = Emp.DeptID;
+                EmpVal.GroupID = Emp.GroupID;
+                EmpVal.HR_Status= Emp.HR_Status ;
+                EmpVal.HR_FTE  = Emp.HR_FTE ;
+                EmpVal.Title  = Emp.Title ;
+                DContext.SubmitChanges();
+            }
+        }
+
         public static void DeactivateEmployee(Employee Emp)
         {
             var EmpVal = DContext.GetTable<Employee>().SingleOrDefault(p => p.EmployeeID == Emp.EmployeeID);
@@ -280,6 +315,174 @@ namespace GUI_Design_Mockup
 
                 DBCommands.DContext.SubmitChanges();
             }
+        }
+
+        public static bool EmployeeNeedsUpdating(Employee Emp, out Employee OldEmp)
+        {
+            bool result = false;
+           OldEmp = GetEmployee(Emp.FirstName,Emp.MiddleInitial,Emp.LastName);
+            if (OldEmp != null)
+            {
+                if(OldEmp.DeptID != Emp.DeptID || OldEmp.Title !=Emp.Title || OldEmp.HR_FTE !=Emp.HR_FTE || OldEmp.HR_Status!=Emp.HR_Status)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+        public static List<Employee> GetAllEmployeeList()
+        {
+
+            var EmpListRaw = from E in DContext.Employees
+                             orderby E.LastName ascending
+                             select E;
+            List<Employee> EmpList = new List<Employee>();
+
+            Employee AllEmployee;
+            AllEmployee = new Employee();
+            AllEmployee.EmployeeID = "EMP-000001";
+            EmpList.Add(AllEmployee);
+
+            foreach (Employee E in EmpListRaw)
+            {
+                EmpList.Add(E);
+            }
+
+            return EmpList;
+        }
+
+        public static List<Type_Of_Award> GetAllTypeOfAwardList(string DefaultAwardType, out Type_Of_Award DefaultResult)
+        {
+            var ToAListRaw = from A in DContext.Type_Of_Awards
+                             where A.IsNomination == true || A.AwardTypeName == "On The Spot"
+                             orderby A.AwardTypeName ascending
+                             select A;
+            List<Type_Of_Award>  AwardTypeList = new List<Type_Of_Award>();
+
+            DefaultResult  = null;
+            foreach (Type_Of_Award T in ToAListRaw)
+            {
+                AwardTypeList.Add(T);
+                if (T.AwardTypeName.Equals(DefaultAwardType, StringComparison.CurrentCultureIgnoreCase))
+                    DefaultResult = T;
+            }
+            return AwardTypeList;
+        }
+
+        public static List<Department> GetAllDepartmentList()
+        {
+            var DeptListRaw = from D in DContext.Departments
+                              orderby D.DeptName ascending
+                              select D;
+            List<Department> DeptList = new List<Department>();
+
+
+            Department AllDepartment;
+            AllDepartment = new Department();
+            AllDepartment.DeptID = "DPT0000000";
+            AllDepartment.DeptName = "All Departments";
+            DeptList.Add(AllDepartment);
+
+            foreach (Department D in DeptListRaw)
+            {
+                DeptList.Add(D);
+            }
+            return DeptList;
+        }
+
+        public static string BuildTeam(params string[] EmployeeIDs)
+        {
+            string TeamId = NextID("Team");
+            int C1;
+            Team temp;
+            for (C1 = 0; C1 < EmployeeIDs.Length; C1++)
+            {
+                string nextID = NextID("Row");
+                temp = new Team();
+                temp.TeamID = TeamId;
+                temp.EmployeeID = EmployeeIDs[C1];
+                temp.RowID = nextID;
+                DContext.Teams.InsertOnSubmit(temp);
+            }
+            DContext.SubmitChanges();
+                return TeamId;
+        }
+
+        public static List<string> GetEmployeeIDsForTeam(string TeamID)
+        {
+            List<string> IDList = new List<String>();
+            var TeamListRaw = from T in DContext.Teams
+                              where T.TeamID == TeamID
+                              select T;
+            foreach (Team T in TeamListRaw)
+                IDList.Add(T.EmployeeID );
+            return IDList;
+        }
+
+        public static List<Employee> GetEmployeesForTeam(string TeamID)
+        {
+            List<Employee> EmpList = new List<Employee>();
+            var TeamListRaw = from T in DContext.Teams
+                              where T.TeamID == TeamID
+                              select T;
+            foreach (Team T in TeamListRaw)
+            {
+                EmpList.Add(GetEmployee(T.EmployeeID));
+            }
+            return EmpList;
+        }
+    }
+
+    //Let's build some ToString() functions, shall we?
+
+    partial class Employee
+    {
+        public override string ToString()
+        {
+            if (EmployeeID == "EMP0000000")
+            {
+                return "All Employees";
+            }
+            else if(EmployeeID=="EMP-000001")
+            {
+                return "Choose an Employee";
+            }
+            else
+                return PreferredName+" " + LastName ;
+        }
+    }
+
+    partial class Department
+    {
+        public override string ToString()
+        {
+            if (DeptID == "DPT0000000")
+                return "All Departments";
+            else
+                return DeptName;
+        }
+    }
+
+    partial class Group
+    {
+        public override string ToString()
+        {
+            if (GroupID == "GRP0000000")
+                return "All Groups";
+            else
+                return GroupNum;
+        }
+    }
+
+    partial class Type_Of_Award
+    {
+        public override string ToString()
+        {
+            if (AwardTypeID == "TOA0000000")
+                return "All Award Types";
+            else
+                return AwardTypeName;
         }
     }
 }

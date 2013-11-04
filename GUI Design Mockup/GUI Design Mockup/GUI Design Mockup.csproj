@@ -112,6 +112,12 @@
     <Compile Include="frmUpdateFromAccess.Designer.cs">
       <DependentUpon>frmUpdateFromAccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdateFromExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateFromExcel.Designer.cs">
+      <DependentUpon>frmUpdateFromExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmYouShowedPRIDE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateFromAccess.resx">
       <DependentUpon>frmUpdateFromAccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateFromExcel.resx">
+      <DependentUpon>frmUpdateFromExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmYouShowedPRIDE.resx">
       <DependentUpon>frmYouShowedPRIDE.cs</DependentUpon>

@@ -15,7 +15,7 @@ namespace GUI_Design_Mockup
         List<Employee> EmpList;
         List<Group> GroupList;
         Employee SelectedEmployee;
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
         public frmUpdateEmployees()
         {
             InitializeComponent();

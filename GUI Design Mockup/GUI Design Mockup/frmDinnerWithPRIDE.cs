@@ -13,7 +13,7 @@ namespace GUI_Design_Mockup
     public partial class frmDinnerWithPRIDE : Form
     {
         List<Group> GroupList;
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
         public frmDinnerWithPRIDE()
         {
             InitializeComponent();

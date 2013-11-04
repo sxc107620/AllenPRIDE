@@ -13,7 +13,7 @@ namespace GUI_Design_Mockup
     public partial class frmPRIDEAwards : Form
     {
         List<Type_Of_Award> AwardList;
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
         public frmPRIDEAwards()
         {
             InitializeComponent();

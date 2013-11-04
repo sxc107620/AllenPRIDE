@@ -12,7 +12,7 @@ namespace GUI_Design_Mockup
 {
     public partial class frmUpdateFromAccess : Form
     {
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
         DataTable AwardDataTable, EmployeeDataTable, EmployeeAwardDataTable, GroupDataTable;
 
         public frmUpdateFromAccess()

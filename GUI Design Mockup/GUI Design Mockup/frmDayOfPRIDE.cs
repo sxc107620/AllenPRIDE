@@ -13,7 +13,7 @@ namespace GUI_Design_Mockup
     public partial class frmDayOfPRIDE : Form
     {
         List<Group> GroupList;
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
 
         public frmDayOfPRIDE()
         {

@@ -14,7 +14,7 @@ namespace GUI_Design_Mockup
     {
         List<Group> GroupList;
         //List<Award> AwardList;
-        DataConnectionClass DContext;
+DataClasses1DataContext DContext;
         public frmYouShowedPRIDE()
         {
             InitializeComponent();

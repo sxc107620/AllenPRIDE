@@ -17,7 +17,7 @@ namespace GUI_Design_Mockup
         List<Employee> EmpList;
         List<Employee> EmpListA;
         List<Type_Of_Award> ToAList;
-        DataConnectionClass DContext;
+        DataClasses1DataContext DContext;
 
         public frmMainMenu()
         {
@@ -52,7 +52,7 @@ namespace GUI_Design_Mockup
             // TODO: This line of code loads data into the 'pRIDE_beDataSet.Employee' table. You can move, or remove it, as needed.
             this.employeeTableAdapter.Fill(this.pRIDE_beDataSet.Employee);
 
-            DBCommands.DContext = new DataConnectionClass();
+            DBCommands.DContext = new DataClasses1DataContext();
             DContext = DBCommands.DContext;
             InitializeGroupBox();
             InitializeDeptBox();

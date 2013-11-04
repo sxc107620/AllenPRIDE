@@ -51,7 +51,7 @@ namespace GUI_Design_Mockup
             reportViewer1.LocalReport.ReportEmbeddedResource = "GUI_Design_Mockup.MonthlyStatsReport.rdlc";
             //Generate a DataSet
             ds = generateDataSet();
-            DataConnectionClass dc = DBCommands.DContext;
+            DataClasses1DataContext  dc = DBCommands.DContext;
             var GroupList = from s in dc.Groups
                             orderby s.GroupNum
                             select s;
@@ -62,9 +62,9 @@ namespace GUI_Design_Mockup
             //}
             //Process the subreport. I'm pretty sure the loop above is necessary rather than the line below
             //But I just can't make it work
-            this.reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SubreportProcessingEventHandler);
             //This line is irrelevant and just so the larger report has a dataset (Which may or may not be necessary)
             this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("StatsReportDataSet", ds.Tables[0]));
+            this.reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SubreportProcessingEventHandler);
             reportViewer1.RefreshReport();   
         }
 
@@ -73,10 +73,11 @@ namespace GUI_Design_Mockup
             //Generate the RDS from the dataset we generate elsewhere
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "StatsReportDataSet"; //Must exactly match the Dataset name in the actual report
+            rds.Value = ds.Tables["A"];
             //Set the datasource to the appropriate table.
             //Using the groupNum int to choose which group table to grab
-            rds.Value = ds.Tables[groupNum];
-            groupNum++;
+            //rds.Value = ds.Tables[groupNum];
+            //groupNum++;
             //MessageBox.Show(groupNum.ToString()); //Verified to run 15 times (Meaning this function runs 15 times, once for each group)
             e.DataSources.Add(rds);
             //foreach (var q in ds.Tables)
@@ -89,10 +90,18 @@ namespace GUI_Design_Mockup
         DataSet generateDataSet()
         {
             DataSet ds = new DataSet("StatsReportDataSet");
+            ds.Tables.Add("A");
+            ds.Tables["A"].Columns.Add("groupNum");
+            ds.Tables["A"].Columns.Add("Department");
+            ds.Tables["A"].Columns.Add("numEmployees");
+            ds.Tables["A"].Columns.Add("numAwardsReceived");
+            ds.Tables["A"].Columns.Add("numEmployeesReceived");
+            ds.Tables["A"].Columns.Add("numAwardsGiven");
+            ds.Tables["A"].Columns.Add("numEmployeesGiven");
             DateTime StartDate = DateTime.Parse("2/1/2013"); //Should adjust these to parameters based on
             DateTime EndDate = DateTime.Parse("2/28/2013"); //The date pickers on the main menu
             Object[] data = new Object[7]; //Stores a row of data
-            DataConnectionClass dc = DBCommands.DContext;
+            DataClasses1DataContext  dc = DBCommands.DContext;
             //Get the group and department list
             var GroupList = from s in dc.Groups
                             orderby s.GroupNum
@@ -103,14 +112,14 @@ namespace GUI_Design_Mockup
             foreach (var q in GroupList)
             {
                 //Add a table to the dataset for this group
-                ds.Tables.Add(q.GroupNum);
-                ds.Tables[q.GroupNum].Columns.Add("groupNum");
-                ds.Tables[q.GroupNum].Columns.Add("Department");
-                ds.Tables[q.GroupNum].Columns.Add("numEmployees");
-                ds.Tables[q.GroupNum].Columns.Add("numAwardsReceived");
-                ds.Tables[q.GroupNum].Columns.Add("numEmployeesReceived");
-                ds.Tables[q.GroupNum].Columns.Add("numAwardsGiven");
-                ds.Tables[q.GroupNum].Columns.Add("numEmployeesGiven");
+                //ds.Tables.Add(q.GroupNum);
+                //ds.Tables[q.GroupNum].Columns.Add("groupNum");
+                //ds.Tables[q.GroupNum].Columns.Add("Department");
+                //ds.Tables[q.GroupNum].Columns.Add("numEmployees");
+                //ds.Tables[q.GroupNum].Columns.Add("numAwardsReceived");
+                //ds.Tables[q.GroupNum].Columns.Add("numEmployeesReceived");
+                //ds.Tables[q.GroupNum].Columns.Add("numAwardsGiven");
+                //ds.Tables[q.GroupNum].Columns.Add("numEmployeesGiven");
                 var EmpsInGroup = from s in dc.Employees
                                   where s.GroupID == q.GroupID
                                   select s;
@@ -142,7 +151,7 @@ namespace GUI_Design_Mockup
                                       select s.NominatorID;
                     data[5] = AwardsGiven.Count(); //Same as awards received
                     data[6] = AwardsGiven.Distinct().Count();
-                    ds.Tables[q.GroupNum].Rows.Add(data); //Add the object vector to the table.
+                    ds.Tables["A"].Rows.Add(data); //Add the object vector to the table.
                 }
             }
             return ds;

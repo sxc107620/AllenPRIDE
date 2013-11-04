@@ -16,9 +16,8 @@ namespace GUI_Design_Mockup
         /*List<Department> DeptList;
         List<Employee> EmpList;
         List<Employee> EmpListA;*/
-        DataConnectionClass DContext;
-
-        Award SelectedAward;
+        DataClasses1DataContext DContext;
+Award SelectedAward;
 
         public frmReviewOnTheSpot(string AwardName = "On The Spot")
         {

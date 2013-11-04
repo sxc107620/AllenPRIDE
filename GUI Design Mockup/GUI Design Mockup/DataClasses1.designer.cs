@@ -23,7 +23,7 @@ namespace GUI_Design_Mockup
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="PRIDEProject")]
-	public partial class DataConnectionClass : System.Data.Linq.DataContext
+	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -54,33 +54,36 @@ namespace GUI_Design_Mockup
     partial void InsertAward(Award instance);
     partial void UpdateAward(Award instance);
     partial void DeleteAward(Award instance);
+    partial void InsertTeam(Team instance);
+    partial void UpdateTeam(Team instance);
+    partial void DeleteTeam(Team instance);
     #endregion
 		
-		public DataConnectionClass() : 
+		public DataClasses1DataContext() : 
 				base(global::GUI_Design_Mockup.Properties.Settings.Default.PRIDEProjectConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataConnectionClass(string connection) : 
+		public DataClasses1DataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataConnectionClass(System.Data.IDbConnection connection) : 
+		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataConnectionClass(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataConnectionClass(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -147,6 +150,14 @@ namespace GUI_Design_Mockup
 			get
 			{
 				return this.GetTable<Award>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Team> Teams
+		{
+			get
+			{
+				return this.GetTable<Team>();
 			}
 		}
 	}
@@ -259,11 +270,6 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public override string ToString()
-        {
-            return DeptName;
-        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
@@ -758,19 +764,6 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public override string ToString()
-        {
-            string Result = "";
-            if (EmployeeID == "EMP0000000")
-                Result = "All Employees";
-            else if (EmployeeID == "EMP-000001")
-                Result = "Select an Employee";
-            else
-                Result = PreferredName + " " + LastName;
-
-            return Result;
-        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Group]")]
@@ -881,11 +874,6 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public override string ToString()
-        {
-            return GroupNum;
-        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NextID")]
@@ -1398,11 +1386,6 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public override string ToString()
-        {
-            return AwardTypeName;
-        }
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Award")]
@@ -1585,11 +1568,116 @@ namespace GUI_Design_Mockup
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public override string ToString()
-        {
-            return AwardID;
-        }
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Team")]
+	public partial class Team : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _RowID;
+		
+		private string _TeamID;
+		
+		private string _EmployeeID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRowIDChanging(string value);
+    partial void OnRowIDChanged();
+    partial void OnTeamIDChanging(string value);
+    partial void OnTeamIDChanged();
+    partial void OnEmployeeIDChanging(string value);
+    partial void OnEmployeeIDChanged();
+    #endregion
+		
+		public Team()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowID", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string RowID
+		{
+			get
+			{
+				return this._RowID;
+			}
+			set
+			{
+				if ((this._RowID != value))
+				{
+					this.OnRowIDChanging(value);
+					this.SendPropertyChanging();
+					this._RowID = value;
+					this.SendPropertyChanged("RowID");
+					this.OnRowIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeamID", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string TeamID
+		{
+			get
+			{
+				return this._TeamID;
+			}
+			set
+			{
+				if ((this._TeamID != value))
+				{
+					this.OnTeamIDChanging(value);
+					this.SendPropertyChanging();
+					this._TeamID = value;
+					this.SendPropertyChanged("TeamID");
+					this.OnTeamIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Char(10)")]
+		public string EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
 	}
 }
 #pragma warning restore 1591
